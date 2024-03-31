@@ -4,7 +4,7 @@ import { defineConfig, type DefaultTheme } from 'vitepress'
 const require = createRequire(import.meta.url)
 const pkg = require('vitepress/package.json')
 
-export const en = defineConfig({
+export const ko = defineConfig({
   lang: 'en-US',
   description: 'Vite & Vue powered static site generator.',
 
@@ -31,12 +31,12 @@ export const en = defineConfig({
 function nav(): DefaultTheme.NavItem[] {
   return [
     {
-      text: 'Guide',
+      text: '가이드',
       link: '/guide/what-is-vitepress',
       activeMatch: '/guide/'
     },
     {
-      text: 'Reference',
+      text: '레퍼런스',
       link: '/reference/site-config',
       activeMatch: '/reference/'
     },
@@ -59,56 +59,56 @@ function nav(): DefaultTheme.NavItem[] {
 function sidebarGuide(): DefaultTheme.SidebarItem[] {
   return [
     {
-      text: 'Introduction',
+      text: '소개',
       collapsed: false,
       items: [
-        { text: 'What is VitePress?', link: 'what-is-vitepress' },
-        { text: 'Getting Started', link: 'getting-started' },
-        { text: 'Routing', link: 'routing' },
-        { text: 'Deploy', link: 'deploy' }
+        { text: 'VitePress란 무엇인가?', link: 'what-is-vitepress' },
+        { text: '시작하기', link: 'getting-started' },
+        { text: '라우팅', link: 'routing' },
+        { text: '배포하기', link: 'deploy' }
       ]
     },
     {
-      text: 'Writing',
+      text: '글쓰기',
       collapsed: false,
       items: [
-        { text: 'Markdown Extensions', link: 'markdown' },
-        { text: 'Asset Handling', link: 'asset-handling' },
-        { text: 'Frontmatter', link: 'frontmatter' },
-        { text: 'Using Vue in Markdown', link: 'using-vue' },
-        { text: 'Internationalization', link: 'i18n' }
+        { text: '마크다운 확장', link: 'markdown' },
+        { text: '에셋 핸들링', link: 'asset-handling' },
+        { text: '프론트마터', link: 'frontmatter' },
+        { text: '마크다운에서 Vue 사용', link: 'using-vue' },
+        { text: '국제화', link: 'i18n' }
       ]
     },
     {
-      text: 'Customization',
+      text: '사용자 정의',
       collapsed: false,
       items: [
-        { text: 'Using a Custom Theme', link: 'custom-theme' },
+        { text: '맞춤 테마 사용', link: 'custom-theme' },
         {
-          text: 'Extending the Default Theme',
+          text: '기본 테마 확장',
           link: 'extending-default-theme'
         },
-        { text: 'Build-Time Data Loading', link: 'data-loading' },
-        { text: 'SSR Compatibility', link: 'ssr-compat' },
-        { text: 'Connecting to a CMS', link: 'cms' }
+        { text: '빌드할 때 데이터 로딩', link: 'data-loading' },
+        { text: 'SSR 호환성', link: 'ssr-compat' },
+        { text: 'CMS 연결', link: 'cms' }
       ]
     },
     {
-      text: 'Experimental',
+      text: '실험적인',
       collapsed: false,
       items: [
-        { text: 'MPA Mode', link: 'mpa-mode' },
-        { text: 'Sitemap Generation', link: 'sitemap-generation' }
+        { text: 'MPA 모드', link: 'mpa-mode' },
+        { text: '사이트맵 생성', link: 'sitemap-generation' }
       ]
     },
-    { text: 'Config & API Reference', base: '/reference/', link: 'site-config' }
+    { text: '설정 & API 참조', base: '/reference/', link: 'site-config' }
   ]
 }
 
 function sidebarReference(): DefaultTheme.SidebarItem[] {
   return [
     {
-      text: 'Reference',
+      text: '레퍼런스',
       items: [
         { text: 'Site Config', link: 'site-config' },
         { text: 'Frontmatter Config', link: 'frontmatter-config' },

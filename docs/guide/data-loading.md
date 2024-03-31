@@ -1,12 +1,12 @@
-# Build-Time Data Loading
+# 빌드할 때 데이터 로딩
 
-VitePress provides a feature called **data loaders** that allows you to load arbitrary data and import it from pages or components. The data loading is executed **only at build time**: the resulting data will be serialized as JSON in the final JavaScript bundle.
+VitePress는 **데이터 로더**라고 불리는 기능을 제공하여 임의의 데이터를 로드하고 페이지나 컴포넌트에서 가져올 수 있습니다. 데이터 로딩은 **빌드 시간에만 실행**됩니다: 결과적으로 생성된 데이터는 최종 자바스크립트 번들에 JSON으로 직렬화됩니다.
 
-Data loaders can be used to fetch remote data, or generate metadata based on local files. For example, you can use data loaders to parse all your local API pages and automatically generate an index of all API entries.
+데이터 로더는 원격 데이터를 가져오거나 로컬 파일을 기반으로 메타데이터를 생성하는 데 사용할 수 있습니다. 예를 들어, 모든 로컬 API 페이지를 파싱하고 모든 API 항목의 색인을 자동으로 생성하기 위해 데이터 로더를 사용할 수 있습니다.
 
-## Basic Usage
+## 기본 사용법
 
-A data loader file must end with either `.data.js` or `.data.ts`. The file should provide a default export of an object with the `load()` method:
+데이터 로더 파일은 `.data.js` 또는 `.data.ts`로 끝나야 합니다. 이 파일은 `load()` 메서드를 가진 객체를 기본 내보내기해야 합니다:
 
 ```js
 // example.data.js
@@ -19,9 +19,9 @@ export default {
 }
 ```
 
-The loader module is evaluated only in Node.js, so you can import Node APIs and npm dependencies as needed.
+로더 모듈은 Node.js에서만 평가되므로, 필요에 따라 Node API와 npm 종속성을 가져올 수 있습니다.
 
-You can then import data from this file in `.md` pages and `.vue` components using the `data` named export:
+이 파일에서 데이터를 `.md` 페이지와 `.vue` 컴포넌트에서 `data`라는 이름으로 내보낼 수 있습니다:
 
 ```vue
 <script setup>
@@ -31,7 +31,7 @@ import { data } from './example.data.js'
 <pre>{{ data }}</pre>
 ```
 
-Output:
+출력:
 
 ```json
 {
@@ -39,26 +39,26 @@ Output:
 }
 ```
 
-You'll notice the data loader itself does not export the `data`. It is VitePress calling the `load()` method behind the scenes and implicitly exposing the result via the `data` named export.
+데이터 로더 자체가 `data`를 내보내지 않는 것을 알 수 있습니다. 이는 VitePress가 내부에서 `load()` 메서드를 호출하고 `data`라는 이름으로 결과를 암시적으로 노출한다는 것을 의미합니다.
 
-This works even if the loader is async:
+로더가 비동기인 경우에도 작동합니다:
 
 ```js
 export default {
   async load() {
-    // fetch remote data
+    // 원격 데이터 가져오기
     return (await fetch('...')).json()
   }
 }
 ```
 
-## Data from Local Files
+## 로컬 파일에서 데이터 가져오기
 
-When you need to generate data based on local files, you should use the `watch` option in the data loader so that changes made to these files can trigger hot updates.
+로컬 파일을 기반으로 데이터를 생성해야 할 때는 데이터 로더에서 `watch` 옵션을 사용해야 합니다. 그래야 해당 파일에 변경 사항이 발생했을 때 핫 업데이트를 트리거할 수 있습니다.
 
-The `watch` option is also convenient in that you can use [glob patterns](https://github.com/mrmlnc/fast-glob#pattern-syntax) to match multiple files. The patterns can be relative to the loader file itself, and the `load()` function will receive the matched files as absolute paths.
+`watch` 옵션은 또한 여러 파일을 일치시키기 위해 [글로브 패턴](https://github.com/mrmlnc/fast-glob#pattern-syntax)을 사용할 수 있어 편리합니다. 패턴은 로더 파일 자체에 상대적이며, `load()` 함수는 일치한 파일을 절대 경로로 받습니다.
 
-The following example shows loading CSV files and transforming them into JSON using [csv-parse](https://github.com/adaltas/node-csv/tree/master/packages/csv-parse/). Because this file only executes at build time, you will not be shipping the CSV parser to the client!
+다음 예제는 [csv-parse](https://github.com/adaltas/node-csv/tree/master/packages/csv-parse/)를 사용하여 CSV 파일을 불러오고 JSON으로 변환하는 방법을 보여줍니다. 이 파일은 빌드 시간에만 실행되므로, CSV 파서를 클라이언트에 전송하지 않을 것입니다!
 
 ```js
 import fs from 'node:fs'
@@ -67,9 +67,9 @@ import { parse } from 'csv-parse/sync'
 export default {
   watch: ['./data/*.csv'],
   load(watchedFiles) {
-    // watchedFiles will be an array of absolute paths of the matched files.
-    // generate an array of blog post metadata that can be used to render
-    // a list in the theme layout
+    // watchedFiles는 일치하는 파일의 절대 경로 배열이 될 것입니다.
+    // 블로그 포스트 메타데이터의 배열을 생성하여
+    // 테마 레이아웃에서 목록을 렌더링하는 데 사용할 수 있습니다
     return watchedFiles.map((file) => {
       return parse(fs.readFileSync(file, 'utf-8'), {
         columns: true,
@@ -82,38 +82,38 @@ export default {
 
 ## `createContentLoader`
 
-When building a content focused site, we often need to create an "archive" or "index" page: a page where we list all available entries in our content collection, for example blog posts or API pages. We **can** implement this directly with the data loader API, but since this is such a common use case, VitePress also provides a `createContentLoader` helper to simplify this:
+콘텐츠 중심 사이트를 구축할 때, 우리는 종종 "아카이브" 또는 "인덱스" 페이지를 만들 필요가 있습니다: 우리 콘텐츠 컬렉션에서 사용 가능한 모든 항목을 나열하는 페이지, 예를 들어 블로그 게시물이나 API 페이지의 경우입니다. 데이터 로더 API를 직접 사용하여 이를 구현할 **수 있지만**, 이는 흔한 사용 사례이므로 VitePress는 이를 단순화하기 위해 `createContentLoader` 헬퍼를 제공합니다:
 
 ```js
 // posts.data.js
 import { createContentLoader } from 'vitepress'
 
-export default createContentLoader('posts/*.md', /* options */)
+export default createContentLoader('posts/*.md', /* 옵션 */)
 ```
 
-The helper takes a glob pattern relative to the [source directory](./routing#source-directory), and returns a `{ watch, load }` data loader object that can be used as the default export in a data loader file. It also implements caching based on file modified timestamps to improve dev performance.
+헬퍼는 [소스 디렉토리](./routing#source-directory)에 상대적인 글로브 패턴을 취하며, 기본 내보내기로 사용할 수 있는 `{ watch, load }` 데이터 로더 객체를 반환합니다. 이는 또한 파일 수정 타임스탬프를 기반으로 캐싱을 구현하여 개발 성능을 향상시킵니다.
 
-Note the loader only works with Markdown files - matched non-Markdown files will be skipped.
+로더는 마크다운 파일과만 작동합니다 - 마크다운이 아닌 일치하는 파일은 건너뜁니다.
 
-The loaded data will be an array with the type of `ContentData[]`:
+로드된 데이터는 `ContentData[]` 타입의 배열일 것입니다:
 
 ```ts
 interface ContentData {
-  // mapped URL for the page. e.g. /posts/hello.html (does not include base)
-  // manually iterate or use custom `transform` to normalize the paths
+  // 페이지의 매핑된 URL입니다. 예: /posts/hello.html (base는 포함하지 않음)
+  // 수동으로 반복하거나 사용자 정의 `transform`을 사용하여 경로를 정규화하세요
   url: string
-  // frontmatter data of the page
+  // 페이지의 프론트매터 데이터
   frontmatter: Record<string, any>
 
-  // the following are only present if relevant options are enabled
-  // we will discuss them below
+  // 다음은 관련 옵션이 활성화되어 있을 때만 존재합니다
+  // 아래에서 이에 대해 논의할 것입니다
   src: string | undefined
   html: string | undefined
   excerpt: string | undefined
 }
 ```
 
-By default, only `url` and `frontmatter` are provided. This is because the loaded data will be inlined as JSON in the client bundle, so we need to be cautious about its size. Here's an example using the data to build a minimal blog index page:
+기본적으로 `url`과 `frontmatter`만 제공됩니다. 로드된 데이터는 클라이언트 번들에 JSON으로 인라인되기 때문에 크기에 대해 신중해야 합니다. 다음은 데이터를 사용하여 최소한의 블로그 인덱스 페이지를 구축하는 예입니다:
 
 ```vue
 <script setup>
@@ -121,7 +121,7 @@ import { data as posts } from './posts.data.js'
 </script>
 
 <template>
-  <h1>All Blog Posts</h1>
+  <h1>모든 블로그 게시물</h1>
   <ul>
     <li v-for="post of posts">
       <a :href="post.url">{{ post.frontmatter.title }}</a>
@@ -131,70 +131,70 @@ import { data as posts } from './posts.data.js'
 </template>
 ```
 
-### Options
+### 옵션
 
-The default data may not suit all needs - you can opt-in to transform the data using options:
+기본 데이터가 모든 요구 사항에 맞지 않을 수 있습니다 - 옵션을 사용하여 데이터를 변환할 수 있습니다:
 
 ```js
 // posts.data.js
 import { createContentLoader } from 'vitepress'
 
 export default createContentLoader('posts/*.md', {
-  includeSrc: true, // include raw markdown source?
-  render: true,     // include rendered full page HTML?
-  excerpt: true,    // include excerpt?
+  includeSrc: true, // 원시 마크다운 소스를 포함시킬까요?
+  render: true,     // 완성된 전체 페이지 HTML을 렌더링하여 포함시킬까요?
+  excerpt: true,    // 발췌문을 포함시킬까요?
   transform(rawData) {
-    // map, sort, or filter the raw data as you wish.
-    // the final result is what will be shipped to the client.
+    // 원하는 대로 원시 데이터를 매핑, 정렬 또는 필터링하세요.
+    // 최종 결과가 클라이언트에 전송될 것입니다.
     return rawData.sort((a, b) => {
       return +new Date(b.frontmatter.date) - +new Date(a.frontmatter.date)
     }).map((page) => {
-      page.src     // raw markdown source
-      page.html    // rendered full page HTML
-      page.excerpt // rendered excerpt HTML (content above first `---`)
+      page.src     // 원시 마크다운 소스
+      page.html    // 렌더링된 전체 페이지 HTML
+      page.excerpt // 렌더링된 발췌문 HTML (`---` 위의 내용)
       return {/* ... */}
     })
   }
 })
 ```
 
-Check out how it is used in the [Vue.js blog](https://github.com/vuejs/blog/blob/main/.vitepress/theme/posts.data.ts).
+[Vue.js 블로그](https://github.com/vuejs/blog/blob/main/.vitepress/theme/posts.data.ts)에서 사용되는 방법을 확인하세요.
 
-The `createContentLoader` API can also be used inside [build hooks](../reference/site-config#build-hooks):
+`createContentLoader` API는 [빌드 후크](../reference/site-config#build-hooks) 내에서도 사용될 수 있습니다:
 
 ```js
 // .vitepress/config.js
 export default {
   async buildEnd() {
     const posts = await createContentLoader('posts/*.md').load()
-    // generate files based on posts metadata, e.g. RSS feed
+    // 포스트 메타데이터를 기반으로 파일 생성하기, 예: RSS 피드
   }
 }
 ```
 
-**Types**
+**타입**
 
 ```ts
 interface ContentOptions<T = ContentData[]> {
   /**
-   * Include src?
+   * src를 포함시킬까요?
    * @default false
    */
   includeSrc?: boolean
 
   /**
-   * Render src to HTML and include in data?
+   * src를 HTML로 렌더링하고 데이터에 포함시킬까요?
    * @default false
    */
   render?: boolean
 
   /**
-   * If `boolean`, whether to parse and include excerpt? (rendered as HTML)
+   * `boolean`인 경우, 발췌문을 구문 분석하고 포함할지 여부입니다. (HTML로 렌더링됨)
    *
-   * If `function`, control how the excerpt is extracted from the content.
+   * `function`인 경우, 콘텐츠에서 발췌문이 추출되는 방식을 제어합니다.
    *
-   * If `string`, define a custom separator to be used for extracting the
-   * excerpt. Default separator is `---` if `excerpt` is `true`.
+   * `string`인 경우, 발췌문을 추출하는 데 사용되는 사용자 정의 구분자를 정의합니다.
+   * `excerpt`가 `true`인 경우 기본 구분자는 `---`입니다.
    *
    * @see https://github.com/jonschlinkert/gray-matter#optionsexcerpt
    * @see https://github.com/jonschlinkert/gray-matter#optionsexcerpt_separator
@@ -207,29 +207,29 @@ interface ContentOptions<T = ContentData[]> {
     | string
 
   /**
-   * Transform the data. Note the data will be inlined as JSON in the client
-   * bundle if imported from components or markdown files.
+   * 데이터를 변환하십시오. 컴포넌트나 마크다운 파일에서 가져올 경우,
+   * 데이터는 클라이언트 번들에 JSON으로 인라인될 것입니다.
    */
   transform?: (data: ContentData[]) => T | Promise<T>
 }
 ```
 
-## Typed Data Loaders
+## 타입된 데이터 로더
 
-When using TypeScript, you can type your loader and `data` export like so:
+TypeScript를 사용할 때, 다음과 같이 로더와 `data` 내보내기를 타입할 수 있습니다:
 
 ```ts
 import { defineLoader } from 'vitepress'
 
 export interface Data {
-  // data type
+  // 데이터 타입
 }
 
 declare const data: Data
 export { data }
 
 export default defineLoader({
-  // type checked loader options
+  // 타입 검사된 로더 옵션
   watch: ['...'],
   async load(): Promise<Data> {
     // ...
@@ -237,9 +237,9 @@ export default defineLoader({
 })
 ```
 
-## Configuration
+## 구성
 
-To get the configuration information inside a loader, you can use some code like this:
+로더 내부에서 구성 정보를 가져오려면 다음과 같은 코드를 사용할 수 있습니다:
 
 ```ts
 import type { SiteConfig } from 'vitepress'
