@@ -1,48 +1,48 @@
 ---
-outline: deep
+개요: 심층
 ---
 
-# Routing
+# 라우팅
 
-## File-Based Routing
+## 파일 기반 라우팅
 
-VitePress uses file-based routing, which means the generated HTML pages are mapped from the directory structure of the source Markdown files. For example, given the following directory structure:
+VitePress는 파일 기반 라우팅을 사용하므로, 생성된 HTML 페이지는 소스 마크다운 파일의 디렉토리 구조에서 매핑됩니다. 예를 들어, 다음과 같은 디렉토리 구조가 주어진 경우:
 
 ```
 .
-├─ guide
-│  ├─ getting-started.md
+├─ 가이드
+│  ├─ 시작하기.md
 │  └─ index.md
 ├─ index.md
-└─ prologue.md
+└─ 프롤로그.md
 ```
 
-The generated HTML pages will be:
+생성된 HTML 페이지는 다음과 같습니다:
 
 ```
-index.md                  -->  /index.html (accessible as /)
-prologue.md               -->  /prologue.html
-guide/index.md            -->  /guide/index.html (accessible as /guide/)
-guide/getting-started.md  -->  /guide/getting-started.html
+index.md                  -->  /index.html (접근 가능 경로 /)
+프롤로그.md               -->  /프롤로그.html
+가이드/index.md          -->  /가이드/index.html (접근 가능 경로 /가이드/)
+가이드/시작하기.md       -->  /가이드/시작하기.html
 ```
 
-The resulting HTML can be hosted on any web server that can serve static files.
+결과적으로 생성된 HTML은 정적 파일을 제공할 수 있는 모든 웹 서버에서 호스팅할 수 있습니다.
 
-## Root and Source Directory
+## 루트와 소스 디렉토리
 
-There are two important concepts in the file structure of a VitePress project: the **project root** and the **source directory**.
+VitePress 프로젝트의 파일 구조에서 두 가지 중요한 개념이 있습니다: **프로젝트 루트**와 **소스 디렉토리**.
 
-### Project Root
+### 프로젝트 루트
 
-Project root is where VitePress will try to look for the `.vitepress` special directory. The `.vitepress` directory is a reserved location for VitePress' config file, dev server cache, build output, and optional theme customization code.
+프로젝트 루트는 VitePress가 `.vitepress` 특수 디렉토리를 찾으려고 시도하는 위치입니다. `.vitepress` 디렉토리는 VitePress의 설정 파일, 개발 서버 캐시, 빌드 출력, 그리고 선택적 테마 커스터마이징 코드를 위한 예약된 위치입니다.
 
-When you run `vitepress dev` or `vitepress build` from the command line, VitePress will use the current working directory as project root. To specify a sub-directory as root, you will need to pass the relative path to the command. For example, if your VitePress project is located in `./docs`, you should run `vitepress dev docs`:
+명령 줄에서 `vitepress dev`나 `vitepress build`를 실행할 때, VitePress는 현재 작업 디렉토리를 프로젝트 루트로 사용합니다. 서브 디렉토리를 루트로 지정하려면 상대 경로를 명령에 전달해야 합니다. 예를 들어, VitePress 프로젝트가 `./docs`에 위치한 경우, `vitepress dev docs`를 실행해야 합니다:
 
 ```
 .
-├─ docs                    # project root
-│  ├─ .vitepress           # config dir
-│  ├─ getting-started.md
+├─ docs                    # 프로젝트 루트
+│  ├─ .vitepress           # 설정 디렉토리
+│  ├─ 시작하기.md
 │  └─ index.md
 └─ ...
 ```
@@ -51,69 +51,69 @@ When you run `vitepress dev` or `vitepress build` from the command line, VitePre
 vitepress dev docs
 ```
 
-This is going to result in the following source-to-HTML mapping:
+이것은 다음과 같은 소스-HTML 매핑을 결과로 합니다:
 
 ```
-docs/index.md            -->  /index.html (accessible as /)
-docs/getting-started.md  -->  /getting-started.html
+docs/index.md            -->  /index.html (접근 가능 경로 /)
+docs/시작하기.md       -->  /시작하기.html
 ```
 
-### Source Directory
+### 소스 디렉토리
 
-Source directory is where your Markdown source files live. By default, it is the same as the project root. However, you can configure it via the [`srcDir`](../reference/site-config#srcdir) config option.
+소스 디렉토리는 마크다운 소스 파일이 위치하는 곳입니다. 기본적으로, 이는 프로젝트 루트와 동일합니다. 하지만, [`srcDir`](../reference/site-config#srcdir) 설정 옵션을 통해 이를 구성할 수 있습니다.
 
-The `srcDir` option is resolved relative to project root. For example, with `srcDir: 'src'`, your file structure will look like this:
+`srcDir` 옵션은 프로젝트 루트에 상대적으로 해결됩니다. 예를 들어, `srcDir: 'src'`로 설정하면, 파일 구조는 다음과 같아질 것입니다:
 
 ```
-.                          # project root
-├─ .vitepress              # config dir
-└─ src                     # source dir
-   ├─ getting-started.md
+.                          # 프로젝트 루트
+├─ .vitepress              # 설정 디렉토리
+└─ src                     # 소스 디렉토리
+   ├─ 시작하기.md
    └─ index.md
 ```
 
-The resulting source-to-HTML mapping:
+결과적으로 생성된 소스-HTML 매핑:
 
 ```
-src/index.md            -->  /index.html (accessible as /)
-src/getting-started.md  -->  /getting-started.html
+src/index.md            -->  /index.html (접근 가능 경로 /)
+src/시작하기.md        -->  /시작하기.html
 ```
 
-## Linking Between Pages
+## 페이지 간 연결
 
-You can use both absolute and relative paths when linking between pages. Note that although both `.md` and `.html` extensions will work, the best practice is to omit file extensions so that VitePress can generate the final URLs based on your config.
+페이지 간 연결 시 절대 경로와 상대 경로를 모두 사용할 수 있습니다. `.md` 및 `.html` 확장자 모두 작동하더라도, 파일 확장자를 생략하여 VitePress가 설정에 기반한 최종 URL을 생성하도록 하는 것이 좋은 방법입니다.
 
 ```md
-<!-- Do -->
-[Getting Started](./getting-started)
-[Getting Started](../guide/getting-started)
+<!-- 수행 -->
+[시작하기](./getting-started)
+[시작하기](../guide/getting-started)
 
-<!-- Don't -->
-[Getting Started](./getting-started.md)
-[Getting Started](./getting-started.html)
+<!-- 수행하지 말 것 -->
+[시작하기](./getting-started.md)
+[시작하기](./getting-started.html)
 ```
 
-Learn more about linking to assets such images in [Asset Handling](./asset-handling).
+[Asset Handling](./asset-handling)에서 이미지와 같은 에셋에 연결하는 방법에 대해 자세히 알아보세요.
 
-### Linking to Non-VitePress Pages
+### VitePress 페이지가 아닌 페이지로 연결
 
-If you want to link to a page in your site that is not generated by VitePress, you'll either need to use the full URL (opens in a new tab) or explicitly specify the target:
+VitePress에서 생성하지 않은 사이트의 페이지에 연결하려면, 전체 URL을 사용해야 합니다(새 탭에서 열림) 또는 명시적으로 대상을 지정해야 합니다:
 
-**Input**
+**입력**
 
 ```md
 [Link to pure.html](/pure.html){target="_self"}
 ```
 
-**Output**
+**출력**
 
 [Link to pure.html](/pure.html){target="_self"}
 
-::: tip Note
+::: tip 참고
 
-In Markdown links, the `base` is automatically prepended to the URL. This means that if you want to link to a page outside of your base, you'd need something like `../../pure.html` in the link (resolved relative to the current page by the browser).
+마크다운 링크에서 `base`는 자동으로 URL에 추가됩니다. 즉, base 외부의 페이지에 연결하려면 링크에 `../../pure.html`와 같은 것이 필요합니다(브라우저에 의해 현재 페이지에 상대적으로 해결됨).
 
-Alternatively, you can directly use the anchor tag syntax:
+또는, 앵커 태그 구문을 직접 사용할 수 있습니다:
 
 ```md
 <a href="/pure.html" target="_self">Link to pure.html</a>
@@ -121,42 +121,42 @@ Alternatively, you can directly use the anchor tag syntax:
 
 :::
 
-## Generating Clean URL
+## 깨끗한 URL 생성
 
-::: warning Server Support Required
-To serve clean URLs with VitePress, server-side support is required.
+::: warning 서버 지원 필요
+VitePress로 깨끗한 URL을 제공하려면 서버 측 지원이 필요합니다.
 :::
 
-By default, VitePress resolves inbound links to URLs ending with `.html`. However, some users may prefer "Clean URLs" without the `.html` extension - for example, `example.com/path` instead of `example.com/path.html`.
+기본적으로, VitePress는 `.html`로 끝나는 URL로 들어오는 링크를 해결합니다. 그러나, 일부 사용자는 `.html` 확장자 없이 "깨끗한 URL"을 선호할 수 있습니다 - 예를 들어, `example.com/path` 대신 `example.com/path.html`.
 
-Some servers or hosting platforms (for example Netlify, Vercel, GitHub Pages) provide the ability to map a URL like `/foo` to `/foo.html` if it exists, without a redirect:
+일부 서버나 호스팅 플랫폼(예: Netlify, Vercel, GitHub 페이지)은 `/foo`와 같은 URL을 `/foo.html`로 매핑할 수 있는 기능을 제공합니다(리다이렉트 없이):
 
-- Netlify and GitHub Pages support this by default.
-- Vercel requires enabling the [`cleanUrls` option in `vercel.json`](https://vercel.com/docs/concepts/projects/project-configuration#cleanurls).
+- Netlify와 GitHub 페이지는 기본적으로 이 기능을 지원합니다.
+- Vercel은 [`vercel.json`에서 `cleanUrls` 옵션을 활성화](https://vercel.com/docs/concepts/projects/project-configuration#cleanurls)해야 합니다.
 
-If this feature is available to you, you can then also enable VitePress' own [`cleanUrls`](../reference/site-config#cleanurls) config option so that:
+이 기능을 사용할 수 있다면, VitePress의 자체 [`cleanUrls`](../reference/site-config#cleanurls) 설정 옵션을 활성화해서:
 
-- Inbound links between pages are generated without the `.html` extension.
-- If current path ends with `.html`, the router will perform a client-side redirect to the extension-less path.
+- 페이지 간의 들어오는 링크가 `.html` 확장자 없이 생성됩니다.
+- 현재 경로가 `.html`로 끝나면, 라우터가 클라이언트 측에서 확장자가 없는 경로로 리다이렉트를 수행합니다.
 
-If, however, you cannot configure your server with such support, you will have to manually resort to the following directory structure:
+그러나, 서버를 이러한 지원으로 구성할 수 없다면, 다음과 같은 디렉토리 구조를 수동으로 활용해야 합니다:
 
 ```
 .
-├─ getting-started
+├─ 시작하기
 │  └─ index.md
-├─ installation
+├─ 설치
 │  └─ index.md
 └─ index.md
 ```
 
-## Route Rewrites
+## 라우트 재작성
 
-You can customize the mapping between the source directory structure and the generated pages. It's useful when you have a complex project structure. For example, let's say you have a monorepo with multiple packages, and would like to place documentations along with the source files like this:
+소스 디렉토리 구조와 생성된 페이지 간의 매핑을 커스터마이즈할 수 있습니다. 복잡한 프로젝트 구조를 가지고 있을 때 유용합니다. 예를 들어, 여러 패키지가 있는 모노레포를 가지고 있고, 소스 파일과 함께 문서를 배치하고 싶다고 가정해 봅시다:
 
 ```
 .
-├─ packages
+├─ 패키지
 │  ├─ pkg-a
 │  │  └─ src
 │  │      ├─ pkg-a-code.ts
@@ -167,67 +167,67 @@ You can customize the mapping between the source directory structure and the gen
 │         └─ pkg-b-docs.md
 ```
 
-And you want the VitePress pages to be generated like this:
+그리고 VitePress 페이지가 다음과 같이 생성되기를 원합니다:
 
 ```
 packages/pkg-a/src/pkg-a-docs.md  -->  /pkg-a/index.html
 packages/pkg-b/src/pkg-b-docs.md  -->  /pkg-b/index.html
 ```
 
-You can achieve this by configuring the [`rewrites`](../reference/site-config#rewrites) option like this:
+이것은 다음과 같이 [`rewrites`](../reference/site-config#rewrites) 옵션을 구성하여 달성할 수 있습니다:
 
 ```ts
 // .vitepress/config.js
 export default {
   rewrites: {
-    'packages/pkg-a/src/pkg-a-docs.md': 'pkg-a/index.md',
-    'packages/pkg-b/src/pkg-b-docs.md': 'pkg-b/index.md'
+    '패키지/pkg-a/src/pkg-a-docs.md': 'pkg-a/index.md',
+    '패키지/pkg-b/src/pkg-b-docs.md': 'pkg-b/index.md'
   }
 }
 ```
 
-The `rewrites` option also supports dynamic route parameters. In the above example, it would be verbose to list all the paths if you have many packages. Given that they all have the same file structure, you can simplify the config like this:
+`rewrites` 옵션은 동적 라우트 매개변수도 지원합니다. 위의 예제에서, 많은 패키지를 가지고 있다면 모든 경로를 나열하는 것은 장황할 것입니다. 모두 같은 파일 구조를 가지고 있다면, 설정을 다음과 같이 간단하게 할 수 있습니다:
 
 ```ts
 export default {
   rewrites: {
-    'packages/:pkg/src/(.*)': ':pkg/index.md'
+    '패키지/:pkg/src/(.*)': ':pkg/index.md'
   }
 }
 ```
 
-The rewrite paths are compiled using the `path-to-regexp` package - consult [its documentation](https://github.com/pillarjs/path-to-regexp#parameters) for more advanced syntax.
+재작성 경로는 `path-to-regexp` 패키지를 사용하여 컴파일됩니다 - 보다 고급 구문에 대해서는 [해당 문서](https://github.com/pillarjs/path-to-regexp#parameters)를 참조하십시오.
 
-::: warning Relative Links with Rewrites
+::: warning 재작성과 상대 링크
 
-When rewrites are enabled, **relative links should be based on the rewritten paths**. For example, in order to create a relative link from `packages/pkg-a/src/pkg-a-code.md` to `packages/pkg-b/src/pkg-b-code.md`, you should use:
+재작성이 활성화된 경우, **상대 링크는 재작성된 경로를 기반으로 해야 합니다**. 예를 들어, `패키지/pkg-a/src/pkg-a-code.md`에서 `패키지/pkg-b/src/pkg-b-code.md`로 상대 링크를 생성하려면 다음을 사용해야 합니다:
 
 ```md
-[Link to PKG B](../pkg-b/pkg-b-code)
+[PKG B로의 링크](../pkg-b/pkg-b-code)
 ```
 :::
 
-## Dynamic Routes
+## 동적 라우트
 
-You can generate many pages using a single Markdown file and dynamic data. For example, you can create a `packages/[pkg].md` file that generates a corresponding page for every package in a project. Here, the `[pkg]` segment is a route **parameter** that differentiates each page from the others.
+단일 마크다운 파일과 동적 데이터를 사용하여 많은 페이지를 생성할 수 있습니다. 예를 들어, 프로젝트의 모든 패키지에 해당하는 페이지를 생성하는 `패키지/[pkg].md` 파일을 만들 수 있습니다. 여기서 `[pkg]` 세그먼트는 각 페이지를 다른 페이지와 구별하는 라우트 **매개변수**입니다.
 
-### Paths Loader File
+### 경로 로더 파일
 
-Since VitePress is a static site generator, the possible page paths must be determined at build time. Therefore, a dynamic route page **must** be accompanied by a **paths loader file**. For `packages/[pkg].md`, we will need `packages/[pkg].paths.js` (`.ts` is also supported):
+VitePress는 정적 사이트 생성기이므로, 가능한 페이지 경로는 빌드 시간에 결정되어야 합니다. 따라서 동적 라우트 페이지는 **경로 로더 파일**을 동반해야 합니다. `패키지/[pkg].md`의 경우, `패키지/[pkg].paths.js`(`.ts`도 지원)가 필요합니다:
 
 ```
 .
-└─ packages
-   ├─ [pkg].md         # route template
-   └─ [pkg].paths.js   # route paths loader
+└─ 패키지
+   ├─ [pkg].md         # 라우트 템플릿
+   └─ [pkg].paths.js   # 라우트 경로 로더
 ```
 
-The paths loader should provide an object with a `paths` method as its default export. The `paths` method should return an array of objects with a `params` property. Each of these objects will generate a corresponding page.
+경로 로더는 `params` 속성을 가진 객체의 배열을 반환하는 `paths` 메서드를 기본 export로 제공하는 객체여야 합니다. 이러한 객체 각각은 해당하는 페이지를 생성할 것입니다.
 
-Given the following `paths` array:
+다음 `paths` 배열이 주어진 경우:
 
 ```js
-// packages/[pkg].paths.js
+// 패키지/[pkg].paths.js
 export default {
   paths() {
     return [
@@ -238,29 +238,29 @@ export default {
 }
 ```
 
-The generated HTML pages will be:
+생성된 HTML 페이지는 다음과 같습니다:
 
 ```
 .
-└─ packages
+└─ 패키지
    ├─ foo.html
    └─ bar.html
 ```
 
-### Multiple Params
+### 여러 매개변수
 
-A dynamic route can contain multiple params:
+동적 라우트는 여러 매개변수를 포함할 수 있습니다:
 
-**File Structure**
+**파일 구조**
 
 ```
 .
-└─ packages
+└─ 패키지
    ├─ [pkg]-[version].md
    └─ [pkg]-[version].paths.js
 ```
 
-**Paths Loader**
+**경로 로더**
 
 ```js
 export default {
@@ -273,22 +273,22 @@ export default {
 }
 ```
 
-**Output**
+**출력**
 
 ```
 .
-└─ packages
+└─ 패키지
    ├─ foo-1.0.0.html
    ├─ foo-2.0.0.html
    ├─ bar-1.0.0.html
    └─ bar-2.0.0.html
 ```
 
-### Dynamically Generating Paths
+### 동적으로 경로 생성
 
-The paths loader module is run in Node.js and only executed during build time. You can dynamically generate the paths array using any data, either local or remote.
+경로 로더 모듈은 Node.js에서 실행되며 빌드 시간에만 실행됩니다. 로컬 또는 원격 데이터를 사용하여 경로 배열을 동적으로 생성할 수 있습니다.
 
-Generating paths from local files:
+로컬 파일에서 경로 생성:
 
 ```js
 import fs from 'fs'
@@ -296,7 +296,7 @@ import fs from 'fs'
 export default {
   paths() {
     return fs
-      .readdirSync('packages')
+      .readdirSync('패키지')
       .map((pkg) => {
         return { params: { pkg }}
       })
@@ -304,7 +304,7 @@ export default {
 }
 ```
 
-Generating paths from remote data:
+원격 데이터에서 경로 생성:
 
 ```js
 export default {
@@ -323,33 +323,33 @@ export default {
 }
 ```
 
-### Accessing Params in Page
+### 페이지에서 매개변수 접근
 
-You can use the params to pass additional data to each page. The Markdown route file can access the current page params in Vue expressions via the `$params` global property:
+각 페이지에 추가 데이터를 전달하기 위해 매개변수를 사용할 수 있습니다. 마크다운 라우트 파일은 `$params` 전역 속성을 통해 현재 페이지 매개변수에 Vue 표현식에서 접근할 수 있습니다:
 
 ```md
-- package name: {{ $params.pkg }}
-- version: {{ $params.version }}
+- 패키지 이름: {{ $params.pkg }}
+- 버전: {{ $params.version }}
 ```
 
-You can also access the current page's params via the [`useData`](../reference/runtime-api#usedata) runtime API. This is available in both Markdown files and Vue components:
+[`useData`](../reference/runtime-api#usedata) 런타임 API를 통해 마크다운 파일과 Vue 컴포넌트에서 현재 페이지의 매개변수에도 접근할 수 있습니다:
 
 ```vue
 <script setup>
 import { useData } from 'vitepress'
 
-// params is a Vue ref
+// params는 Vue ref입니다
 const { params } = useData()
 
 console.log(params.value)
 </script>
 ```
 
-### Rendering Raw Content
+### 원시 콘텐츠 렌더링
 
-Params passed to the page will be serialized in the client JavaScript payload, so you should avoid passing heavy data in params, for example raw Markdown or HTML content fetched from a remote CMS.
+페이지로 전달된 매개변수는 클라이언트 JavaScript 페이로드에 직렬화되므로, 예를 들어 원격 CMS에서 가져온 원시 마크다운이나 HTML 콘텐츠와 같이 무거운 데이터를 매개변수로 전달하지 마십시오.
 
-Instead, you can pass such content to each page using the `content` property on each path object:
+대신, 각 경로 객체의 `content` 속성을 사용하여 각 페이지에 이러한 콘텐츠를 전달할 수 있습니다:
 
 ```js
 export default {
@@ -359,14 +359,14 @@ export default {
     return posts.map((post) => {
       return {
         params: { id: post.id },
-        content: post.content // raw Markdown or HTML
+        content: post.content // 원시 마크다운 또는 HTML
       }
     })
   }
 }
 ```
 
-Then, use the following special syntax to render the content as part of the Markdown file itself:
+그런 다음 다음 특수 구문을 사용하여 마크다운 파일 자체의 일부로 콘텐츠를 렌더링하세요:
 
 ```md
 <!-- @content -->

@@ -1,19 +1,19 @@
-# Getting Started
+# 시작하기
 
-## Try It Online
+## 온라인에서 시도해보기
 
-You can try VitePress directly in your browser on [StackBlitz](https://vitepress.new).
+브라우저에서 바로 VitePress를 시도해 볼 수 있습니다 [StackBlitz](https://vitepress.new).
 
-## Installation
+## 설치
 
-### Prerequisites
+### 사전 준비 사항
 
-- [Node.js](https://nodejs.org/) version 18 or higher.
-- Terminal for accessing VitePress via its command line interface (CLI).
-- Text Editor with [Markdown](https://en.wikipedia.org/wiki/Markdown) syntax support.
-  - [VSCode](https://code.visualstudio.com/) is recommended, along with the [official Vue extension](https://marketplace.visualstudio.com/items?itemName=Vue.volar).
+- [Node.js](https://nodejs.org/) 버전 18 이상.
+- VitePress를 명령줄 인터페이스(CLI)를 통해 접근하기 위한 터미널.
+- [Markdown](https://en.wikipedia.org/wiki/Markdown) 문법 지원이 있는 텍스트 에디터.
+  - [VSCode](https://code.visualstudio.com/)와 [공식 Vue 확장 프로그램](https://marketplace.visualstudio.com/items?itemName=Vue.volar) 사용을 권장합니다.
 
-VitePress can be used on its own, or be installed into an existing project. In both cases, you can install it with:
+VitePress는 독립 실행형으로 사용하거나 기존 프로젝트에 설치할 수 있습니다. 어떤 경우든 다음과 같이 설치할 수 있습니다:
 
 ::: code-group
 
@@ -35,8 +35,8 @@ $ bun add -D vitepress
 
 :::
 
-::: details Getting missing peer deps warnings?
-If using PNPM, you will notice a missing peer warning for `@docsearch/js`. This does not prevent VitePress from working. If you wish to suppress this warning, add the following to your `package.json`:
+::: details 필요한 피어 종속성 경고가 나타나나요?
+PNPM을 사용할 경우 `@docsearch/js`에 대한 누락된 피어 경고를 볼 수 있습니다. 이것은 VitePress 작동을 방해하지 않습니다. 이 경고를 억제하려면, `package.json`에 다음을 추가하세요:
 
 ```json
 "pnpm": {
@@ -51,15 +51,15 @@ If using PNPM, you will notice a missing peer warning for `@docsearch/js`. This 
 
 :::
 
-::: tip NOTE
+::: tip 참고
 
-VitePress is an ESM-only package. Don't use `require()` to import it, and make sure your nearest `package.json` contains `"type": "module"`, or change the file extension of your relevant files like `.vitepress/config.js` to `.mjs`/`.mts`. Refer to [Vite's troubleshooting guide](http://vitejs.dev/guide/troubleshooting.html#this-package-is-esm-only) for more details. Also, inside async CJS contexts, you can use `await import('vitepress')` instead.
+VitePress는 ESM-only 패키지입니다. `require()`를 사용하여 가져오지 마십시오, 그리고 가장 가까운 `package.json`에 `"type": "module"`이 포함되어 있는지 확인하거나, 관련 파일(예: `.vitepress/config.js`)의 확장자를 `.mjs`/`.mts`로 변경하십시오. 자세한 내용은 [Vite의 문제 해결 가이드](http://vitejs.dev/guide/troubleshooting.html#this-package-is-esm-only)를 참조하십시오. 또한, 비동기 CJS 컨텍스트 내에서는 대신 `await import('vitepress')`를 사용할 수 있습니다.
 
 :::
 
-### Setup Wizard
+### 설정 마법사
 
-VitePress ships with a command line setup wizard that will help you scaffold a basic project. After installation, start the wizard by running:
+VitePress는 기본 프로젝트를 스캐폴딩하는 데 도움이 되는 명령줄 설정 마법사를 제공합니다. 설치 후, 마법사를 시작하려면 다음을 실행하세요:
 
 ::: code-group
 
@@ -77,19 +77,19 @@ $ bunx vitepress init
 
 :::
 
-You will be greeted with a few simple questions:
+몇 가지 간단한 질문들이 나타날 것입니다:
 
 <<< @/snippets/init.ansi
 
-::: tip Vue as Peer Dependency
-If you intend to perform customization that uses Vue components or APIs, you should also explicitly install `vue` as a peer dependency.
+::: tip Vue를 피어 의존성으로
+Vue 컴포넌트나 API를 사용하여 커스터마이즈를 수행하려면, `vue`도 명시적으로 피어 의존성으로 설치해야 합니다.
 :::
 
-## File Structure
+## 파일 구조
 
-If you are building a standalone VitePress site, you can scaffold the site in your current directory (`./`). However, if you are installing VitePress in an existing project alongside other source code, it is recommended to scaffold the site in a nested directory (e.g. `./docs`) so that it is separate from the rest of the project.
+독립 실행형 VitePress 사이트를 빌딩하는 경우, 현재 디렉토리(`./`)에 사이트를 스캐폴딩할 수 있습니다. 그러나 다른 소스 코드와 함께 기존 프로젝트에 VitePress를 설치하는 경우, 프로젝트의 나머지 부분과 별도로 (`예: `./docs`) 중첩된 디렉토리에 사이트를 스캐폴딩하는 것이 좋습니다.
 
-Assuming you chose to scaffold the VitePress project in `./docs`, the generated file structure should look like this:
+VitePress 프로젝트를 `./docs`에 스캐폴딩하기로 선택한 경우 생성된 파일 구조는 다음과 같아야 합니다:
 
 ```
 .
@@ -102,42 +102,42 @@ Assuming you chose to scaffold the VitePress project in `./docs`, the generated 
 └─ package.json
 ```
 
-The `docs` directory is considered the **project root** of the VitePress site. The `.vitepress` directory is a reserved location for VitePress' config file, dev server cache, build output, and optional theme customization code.
+`docs` 디렉토리는 VitePress 사이트의 **프로젝트 루트**로 간주됩니다. `.vitepress` 디렉토리는 VitePress의 설정 파일, 개발 서버 캐시, 빌드 출력 및 선택적 테마 사용자 정의 코드를 위한 예약된 위치입니다.
 
 ::: tip
-By default, VitePress stores its dev server cache in `.vitepress/cache`, and the production build output in `.vitepress/dist`. If using Git, you should add them to your `.gitignore` file. These locations can also be [configured](../reference/site-config#outdir).
+기본적으로, VitePress는 개발 서버 캐시를 `.vitepress/cache`에, 프로덕션 빌드 출력을 `.vitepress/dist`에 저장합니다. Git을 사용하는 경우, 이들을 `.gitignore` 파일에 추가해야 합니다. 이 위치는 또한 [구성할 수 있습니다](../reference/site-config#outdir).
 :::
 
-### The Config File
+### 설정 파일
 
-The config file (`.vitepress/config.js`) allows you to customize various aspects of your VitePress site, with the most basic options being the title and description of the site:
+설정 파일(`.vitepress/config.js`)을 사용하면 사이트의 제목과 설명과 같은 VitePress 사이트의 다양한 측면을 커스터마이즈할 수 있습니다:
 
 ```js
 // .vitepress/config.js
 export default {
-  // site-level options
+  // 사이트 수준 옵션
   title: 'VitePress',
-  description: 'Just playing around.',
+  description: '그냥 해보는 중.',
 
   themeConfig: {
-    // theme-level options
+    // 테마 수준 옵션
   }
 }
 ```
 
-You can also configure the behavior of the theme via the `themeConfig` option. Consult the [Config Reference](../reference/site-config) for full details on all config options.
+`themeConfig` 옵션을 통해 테마의 동작을 구성할 수도 있습니다. 모든 구성 옵션에 대한 전체 세부 정보는 [구성 참조](../reference/site-config)를 참조하십시오.
 
-### Source Files
+### 소스 파일
 
-Markdown files outside the `.vitepress` directory are considered **source files**.
+`.vitepress` 디렉토리 밖의 마크다운 파일들은 **소스 파일**로 간주됩니다.
 
-VitePress uses **file-based routing**: each `.md` file is compiled into a corresponding `.html` file with the same path. For example, `index.md` will be compiled into `index.html`, and can be visited at the root path `/` of the resulting VitePress site.
+VitePress는 **파일 기반 라우팅**을 사용합니다: 각 `.md` 파일은 동일한 경로에 해당하는 `.html` 파일로 컴파일됩니다. 예를 들어, `index.md`는 `index.html`로 컴파일되며, 결과적인 VitePress 사이트의 루트 경로 `/`에서 방문할 수 있습니다.
 
-VitePress also provides the ability to generate clean URLs, rewrite paths, and dynamically generate pages. These will be covered in the [Routing Guide](./routing).
+VitePress는 또한 깨끗한 URL 생성, 경로 리라이팅 및 동적 페이지 생성 기능을 제공합니다. 이러한 내용은 [라우팅 가이드](./routing)에서 다뤄질 것입니다.
 
-## Up and Running
+## 실행 및 작동
 
-The tool should have also injected the following npm scripts to your `package.json` if you allowed it to do so during the setup process:
+설정 프로세스 중에 허용한 경우, 도구는 `package.json`에 다음 npm 스크립트를 주입해야 합니다:
 
 ```json
 {
@@ -151,7 +151,7 @@ The tool should have also injected the following npm scripts to your `package.js
 }
 ```
 
-The `docs:dev` script will start a local dev server with instant hot updates. Run it with the following command:
+`docs:dev` 스크립트는 즉각적인 핫 업데이트를 제공하는 로컬 개발 서버를 시작합니다. 다음 명령으로 실행하세요:
 
 ::: code-group
 
@@ -173,7 +173,7 @@ $ bun run docs:dev
 
 :::
 
-Instead of npm scripts, you can also invoke VitePress directly with:
+npm 스크립트 대신, 다음과 같이 VitePress를 직접 호출할 수도 있습니다:
 
 ::: code-group
 
@@ -191,18 +191,18 @@ $ bunx vitepress dev docs
 
 :::
 
-More command line usage is documented in the [CLI Reference](../reference/cli).
+명령줄 사용법은 [CLI 참조](../reference/cli)에 문서화되어 있습니다.
 
-The dev server should be running at `http://localhost:5173`. Visit the URL in your browser to see your new site in action!
+개발 서버는 `http://localhost:5173`에서 실행되어야 합니다. 브라우저에서 URL을 방문하여 새 사이트를 확인하세요!
 
-## What's Next?
+## 다음 단계는?
 
-- To better understand how markdown files are mapped to generated HTML, proceed to the [Routing Guide](./routing).
+- 생성된 HTML로 마크다운 파일이 어떻게 매핑되는지 더 잘 이해하려면, [라우팅 가이드](./routing)로 진행하세요.
 
-- To discover more about what you can do on the page, such as writing markdown content or using Vue Components, refer to the "Writing" section of the guide. A great place to start would be to learn about [Markdown Extensions](./markdown).
+- 페이지에서 할 수 있는 일에 대해 더 알아보려면, 마크다운 콘텐츠 작성이나 Vue 컴포넌트 사용과 같은 "작성" 섹션의 가이드를 참조하십시오. 시작하기 좋은 곳은 [마크다운 확장](./markdown)에 대해 배우는 것입니다.
 
-- To explore the features provided by the default documentation theme, check out the [Default Theme Config Reference](../reference/default-theme-config).
+- 기본 문서 테마가 제공하는 기능을 탐색하려면, [기본 테마 구성 참조](../reference/default-theme-config)를 확인하세요.
 
-- If you want to further customize the appearance of your site, explore how to either [Extend the Default Theme](./extending-default-theme) or [Build a Custom Theme](./custom-theme).
+- 사이트의 모양을 더욱 커스터마이즈하고 싶다면, [기본 테마 확장](./extending-default-theme)이나 [커스텀 테마 빌드](./custom-theme)하는 방법을 탐색해보세요.
 
-- Once your documentation site takes shape, make sure to read the [Deployment Guide](./deploy).
+- 문서 사이트가 구성되기 시작하면, [배포 가이드](./deploy)를 반드시 읽어보세요.

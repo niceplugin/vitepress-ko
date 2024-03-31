@@ -6,22 +6,18 @@
 
 ---
 
-VitePress is a Vue-powered static site generator and a spiritual successor to [VuePress](https://vuepress.vuejs.org), built on top of [Vite](https://github.com/vitejs/vite).
+## VitePress 한글 번역 저장소 입니다~ 😆
 
-## Documentation
+VitePress는 [Vite](https://vuepress.vuejs.org) 위에 구축된 [VuePress](https://github.com/vitejs/vite)의 정신적 후계자이며 Vue로 구동되는 정적 사이트 생성기입니다.
 
-To check out docs, visit [vitepress.dev](https://vitepress.dev).
+## 문서
 
-## Changelog
+문서를 확인하려면 [vitepress.dev](https://vitepress.dev)를 방문하세요.
 
-Detailed changes for each release are documented in the [CHANGELOG](https://github.com/vuejs/vitepress/blob/main/CHANGELOG.md).
+## 변경 로그
 
-## Contribution
+각 릴리스에 대한 자세한 변경 사항은 [CHANGELOG](https://github.com/vuejs/vitepress/blob/main/CHANGELOG.md)에 문서화되어 있습니다.
 
-Please make sure to read the [Contributing Guide](https://github.com/vuejs/vitepress/blob/main/.github/contributing.md) before making a pull request.
+## 기여
 
-## License
-
-[MIT](https://github.com/vuejs/vitepress/blob/main/LICENSE)
-
-Copyright (c) 2019-present, Yuxi (Evan) You
+풀 리퀘스트를 하기 전에 [기여 가이드](https://github.com/vuejs/vitepress/blob/main/.github/contributing.md)를 꼭 읽어주세요.

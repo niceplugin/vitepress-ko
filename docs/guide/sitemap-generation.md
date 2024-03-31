@@ -1,6 +1,6 @@
-# Sitemap Generation
+# 사이트맵 생성
 
-VitePress comes with out-of-the-box support for generating a `sitemap.xml` file for your site. To enable it, add the following to your `.vitepress/config.js`:
+VitePress는 기본적으로 사이트용 `sitemap.xml` 파일을 생성하는 지원을 제공합니다. 활성화하려면 다음을 `.vitepress/config.js`에 추가하세요:
 
 ```ts
 import { defineConfig } from 'vitepress'
@@ -12,11 +12,11 @@ export default defineConfig({
 })
 ```
 
-To have `<lastmod>` tags in your `sitemap.xml`, you can enable the [`lastUpdated`](../reference/default-theme-last-updated) option.
+`sitemap.xml`에 `<lastmod>` 태그를 포함하고 싶다면, [`lastUpdated`](../reference/default-theme-last-updated) 옵션을 활성화할 수 있습니다.
 
-## Options
+## 옵션들
 
-Sitemap support is powered by the [`sitemap`](https://www.npmjs.com/package/sitemap) module. You can pass any options supported by it to the `sitemap` option in your config file. These will be passed directly to the `SitemapStream` constructor. Refer to the [`sitemap` documentation](https://www.npmjs.com/package/sitemap#options-you-can-pass) for more details. Example:
+사이트맵 지원은 [`sitemap`](https://www.npmjs.com/package/sitemap) 모듈에 의해 제공됩니다. 이 모듈에서 지원하는 모든 옵션을 설정 파일의 `sitemap` 옵션에 전달할 수 있습니다. 이들은 `SitemapStream` 생성자에 직접 전달됩니다. 자세한 내용은 [`sitemap` 문서](https://www.npmjs.com/package/sitemap#options-you-can-pass)를 참조하세요. 예시:
 
 ```ts
 import { defineConfig } from 'vitepress'
@@ -29,9 +29,9 @@ export default defineConfig({
 })
 ```
 
-## `transformItems` Hook
+## `transformItems` 훅
 
-You can use the `sitemap.transformItems` hook to modify the sitemap items before they are written to the `sitemap.xml` file. This hook is called with an array of sitemap items and expects an array of sitemap items to be returned. Example:
+`sitemap.transformItems` 훅을 사용하여 `sitemap.xml` 파일에 기록되기 전에 사이트맵 항목을 수정할 수 있습니다. 이 훅은 사이트맵 항목 배열로 호출되며, 사이트맵 항목 배열이 반환되기를 기대합니다. 예시:
 
 ```ts
 import { defineConfig } from 'vitepress'
@@ -40,7 +40,7 @@ export default defineConfig({
   sitemap: {
     hostname: 'https://example.com',
     transformItems: (items) => {
-      // add new items or modify/filter existing items
+      // 새 항목 추가 또는 기존 항목 수정/필터링
       items.push({
         url: '/extra-page',
         changefreq: 'monthly',

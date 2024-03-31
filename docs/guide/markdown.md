@@ -1,30 +1,30 @@
-# Markdown Extensions
+# 마크다운 확장
 
-VitePress comes with built in Markdown Extensions.
+VitePress는 내장된 마크다운 확장을 제공합니다.
 
-## Header Anchors
+## 헤더 앵커
 
-Headers automatically get anchor links applied. Rendering of anchors can be configured using the `markdown.anchor` option.
+헤더에는 자동으로 앵커 링크가 적용됩니다. 앵커의 렌더링은 `markdown.anchor` 옵션을 사용하여 구성할 수 있습니다.
 
-### Custom anchors
+### 사용자 정의 앵커
 
-To specify a custom anchor tag for a heading instead of using the auto-generated one, add a suffix to the heading:
+자동 생성된 것 대신 헤더에 대한 사용자 정의 앵커 태그를 지정하려면, 헤딩에 접미사를 추가하세요:
 
 ```
-# Using custom anchors {#my-anchor}
+# 사용자 정의 앵커 사용 {#my-anchor}
 ```
 
-This allows you to link to the heading as `#my-anchor` instead of the default `#using-custom-anchors`.
+이를 통해 기본값인 `#using-custom-anchors` 대신 `#my-anchor`로 헤딩에 링크할 수 있습니다.
 
-## Links
+## 링크
 
-Both internal and external links get special treatment.
+내부 및 외부 링크는 특별한 처리를 받습니다.
 
-### Internal Links
+### 내부 링크
 
-Internal links are converted to router link for SPA navigation. Also, every `index.md` contained in each sub-directory will automatically be converted to `index.html`, with corresponding URL `/`.
+내부 링크는 SPA 탐색을 위한 라우터 링크로 변환됩니다. 또한, 각 하위 디렉토리에 포함된 모든 `index.md`는 자동으로 `index.html`로 변환되며, 해당 URL은 `/`입니다.
 
-For example, given the following directory structure:
+예를 들어, 다음과 같은 디렉토리 구조가 주어져 있습니다:
 
 ```
 .
@@ -39,174 +39,174 @@ For example, given the following directory structure:
    └─ four.md
 ```
 
-And providing you are in `foo/one.md`:
+그리고 `foo/one.md`에 있다고 하면:
 
 ```md
-[Home](/) <!-- sends the user to the root index.md -->
-[foo](/foo/) <!-- sends the user to index.html of directory foo -->
-[foo heading](./#heading) <!-- anchors user to a heading in the foo index file -->
-[bar - three](../bar/three) <!-- you can omit extension -->
-[bar - three](../bar/three.md) <!-- you can append .md -->
-[bar - four](../bar/four.html) <!-- or you can append .html -->
+[홈](/) <!-- 사용자를 루트 index.md로 보냅니다 -->
+[foo](/foo/) <!-- foo 디렉토리의 index.html로 보냅니다 -->
+[foo 헤딩](./#heading) <!-- foo index 파일의 헤딩으로 앵커링합니다 -->
+[bar - three](../bar/three) <!-- 확장자를 생략할 수 있습니다 -->
+[bar - three](../bar/three.md) <!-- .md를 추가할 수 있습니다 -->
+[bar - four](../bar/four.html) <!-- 또는 .html을 추가할 수 있습니다 -->
 ```
 
-### Page Suffix
+### 페이지 접미사
 
-Pages and internal links get generated with the `.html` suffix by default.
+기본적으로 페이지와 내부 링크는 `.html` 접미사를 가지고 생성됩니다.
 
-### External Links
+### 외부 링크
 
-Outbound links automatically get `target="_blank" rel="noreferrer"`:
+외부 링크는 자동으로 `target="_blank" rel="noreferrer"`를 받습니다:
 
 - [vuejs.org](https://vuejs.org)
-- [VitePress on GitHub](https://github.com/vuejs/vitepress)
+- [GitHub에서 VitePress](https://github.com/vuejs/vitepress)
 
-## Frontmatter
+## 프론트매터
 
-[YAML frontmatter](https://jekyllrb.com/docs/front-matter/) is supported out of the box:
+[YAML 프론트매터](https://jekyllrb.com/docs/front-matter/)가 기본적으로 지원됩니다:
 
 ```yaml
 ---
-title: Blogging Like a Hacker
+title: 해커처럼 블로깅하기
 lang: en-US
 ---
 ```
 
-This data will be available to the rest of the page, along with all custom and theming components.
+이 데이터는 페이지의 나머지 부분, 모든 사용자 정의 및 테마 구성 요소와 함께 사용할 수 있습니다.
 
-For more details, see [Frontmatter](../reference/frontmatter-config).
+자세한 내용은 [프론트매터](../reference/frontmatter-config)를 참조하세요.
 
-## GitHub-Style Tables
+## GitHub 스타일 테이블
 
-**Input**
+**입력**
 
 ```md
-| Tables        |      Are      |  Cool |
+| 테이블        |      은      |  멋져 |
 | ------------- | :-----------: | ----: |
-| col 3 is      | right-aligned | $1600 |
-| col 2 is      |   centered    |   $12 |
-| zebra stripes |   are neat    |    $1 |
+| 3열은      | 오른쪽 정렬입니다 | $1600 |
+| 2열은      |   가운데 정렬입니다    |   $12 |
+| 얼룩말 줄무늬 |   멋져요    |    $1 |
 ```
 
-**Output**
+**출력**
 
-| Tables        |      Are      |   Cool |
+| 테이블        |      은      |   멋져 |
 | ------------- | :-----------: | -----: |
-| col 3 is      | right-aligned | \$1600 |
-| col 2 is      |   centered    |   \$12 |
-| zebra stripes |   are neat    |    \$1 |
+| 3열은      | 오른쪽 정렬입니다 | \$1600 |
+| 2열은      |   가운데 정렬입니다    |   \$12 |
+| 얼룩말 줄무늬 |   멋져요    |    \$1 |
 
-## Emoji :tada:
+## 이모지 :tada:
 
-**Input**
+**입력**
 
 ```
 :tada: :100:
 ```
 
-**Output**
+**출력**
 
 :tada: :100:
 
-A [list of all emojis](https://github.com/markdown-it/markdown-it-emoji/blob/master/lib/data/full.mjs) is available.
+[모든 이모지의 목록](https://github.com/markdown-it/markdown-it-emoji/blob/master/lib/data/full.mjs)이 제공됩니다.
 
-## Table of Contents
+## 목차
 
-**Input**
+**입력**
 
 ```
 [[toc]]
 ```
 
-**Output**
+**출력**
 
 [[toc]]
 
-Rendering of the TOC can be configured using the `markdown.toc` option.
+TOC의 렌더링은 `markdown.toc` 옵션을 사용하여 구성할 수 있습니다.
 
-## Custom Containers
+## 사용자 정의 컨테이너
 
-Custom containers can be defined by their types, titles, and contents.
+사용자 정의 컨테이너는 그들의 유형, 제목, 그리고 내용에 의해 정의될 수 있습니다.
 
-### Default Title
+### 기본 제목
 
-**Input**
+**입력**
 
 ```md
 ::: info
-This is an info box.
+정보 상자입니다.
 :::
 
 ::: tip
-This is a tip.
+팁입니다.
 :::
 
 ::: warning
-This is a warning.
+경고입니다.
 :::
 
 ::: danger
-This is a dangerous warning.
+위험한 경고입니다.
 :::
 
 ::: details
-This is a details block.
+세부 정보 블록입니다.
 :::
 ```
 
-**Output**
+**출력**
 
 ::: info
-This is an info box.
+정보 상자입니다.
 :::
 
 ::: tip
-This is a tip.
+팁입니다.
 :::
 
 ::: warning
-This is a warning.
+경고입니다.
 :::
 
 ::: danger
-This is a dangerous warning.
+위험한 경고입니다.
 :::
 
 ::: details
-This is a details block.
+세부 정보 블록입니다.
 :::
 
-### Custom Title
+### 사용자 정의 제목
 
-You may set custom title by appending the text right after the "type" of the container.
+컨테이너의 "유형" 바로 뒤에 텍스트를 추가하여 사용자 정의 제목을 설정할 수 있습니다.
 
-**Input**
+**입력**
 
 ````md
-::: danger STOP
-Danger zone, do not proceed
+::: danger 정지
+위험 지대, 진행하지 마세요
 :::
 
-::: details Click me to view the code
+::: details 코드를 보려면 클릭하세요
 ```js
 console.log('Hello, VitePress!')
 ```
 :::
 ````
 
-**Output**
+**출력**
 
-::: danger STOP
-Danger zone, do not proceed
+::: danger 정지
+위험 지대, 진행하지 마세요
 :::
 
-::: details Click me to view the code
+::: details 코드를 보려면 클릭하세요
 ```js
 console.log('Hello, VitePress!')
 ```
 :::
 
-Also, you may set custom titles globally by adding the following content in site config, helpful if not writing in English:
+또한, 사이트 구성에서 다음과 같은 내용을 추가하여 전 세계적으로 사용자 정의 제목을 설정할 수 있습니다. 영어로 작성하지 않는 경우 유용합니다:
 
 ```ts
 // config.ts
@@ -214,11 +214,11 @@ export default defineConfig({
   // ...
   markdown: {
     container: {
-      tipLabel: '提示',
-      warningLabel: '警告',
-      dangerLabel: '危险',
-      infoLabel: '信息',
-      detailsLabel: '详细信息'
+      tipLabel: '팁',
+      warningLabel: '경고',
+      dangerLabel: '위험',
+      infoLabel: '정보',
+      detailsLabel: '세부 정보'
     }
   }
   // ...
@@ -227,25 +227,25 @@ export default defineConfig({
 
 ### `raw`
 
-This is a special container that can be used to prevent style and router conflicts with VitePress. This is especially useful when you're documenting component libraries. You might also wanna check out [whyframe](https://whyframe.dev/docs/integrations/vitepress) for better isolation.
+VitePress와 스타일 및 라우터 충돌을 방지하기 위해 사용될 수 있는 특수 컨테이너입니다. 이는 특히 컴포넌트 라이브러리를 문서화할 때 유용합니다. 더 나은 격리를 위해 [whyframe](https://whyframe.dev/docs/integrations/vitepress)을 확인해보세요.
 
-**Syntax**
+**문법**
 
 ```md
 ::: raw
-Wraps in a <div class="vp-raw">
+<div class="vp-raw">로 감쌉니다
 :::
 ```
 
-`vp-raw` class can be directly used on elements too. Style isolation is currently opt-in:
+`vp-raw` 클래스는 직접 요소에 사용될 수도 있습니다. 현재 스타일 격리는 선택 사항입니다:
 
-- Install `postcss` with your preferred package manager:
+- 원하는 패키지 관리자로 `postcss`를 설치하세요:
 
   ```sh
   $ npm add -D postcss
   ```
 
-- Create a file named `docs/postcss.config.mjs` and add this to it:
+- `docs/postcss.config.mjs`라는 파일을 만들고 이것을 추가하세요:
 
   ```js
   import { postcssIsolateStyles } from 'vitepress'
@@ -255,57 +255,57 @@ Wraps in a <div class="vp-raw">
   }
   ```
 
-  It uses [`postcss-prefix-selector`](https://github.com/postcss/postcss-load-config) under the hood. You can pass its options like this:
+  이것은 내부적으로 [`postcss-prefix-selector`](https://github.com/postcss/postcss-load-config)를 사용합니다. 이렇게 옵션을 전달할 수 있습니다:
 
   ```js
   postcssIsolateStyles({
-    includeFiles: [/vp-doc\.css/] // defaults to /base\.css/
+    includeFiles: [/vp-doc\.css/] // 기본값은 /base\.css/
   })
   ```
 
-## GitHub-flavored Alerts
+## GitHub 스타일 경고
 
-VitePress also supports [GitHub-flavored alerts](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#alerts) to render as callouts. They will be rendered the same as the [custom containers](#custom-containers).
+VitePress는 [GitHub 스타일 경고](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#alerts)를 콜아웃으로 렌더링하는 것을 지원합니다. 이것은 [사용자 정의 컨테이너](#custom-containers)와 같은 방식으로 렌더링됩니다.
 
 ```md
 > [!NOTE]
-> Highlights information that users should take into account, even when skimming.
+> 사용자가 훑어보더라도 알아야 할 정보를 강조합니다.
 
 > [!TIP]
-> Optional information to help a user be more successful.
+> 사용자가 더 성공할 수 있도록 도움이 되는 선택적 정보입니다.
 
 > [!IMPORTANT]
-> Crucial information necessary for users to succeed.
+> 사용자가 성공하기 위해 필수적인 중요 정보입니다.
 
 > [!WARNING]
-> Critical content demanding immediate user attention due to potential risks.
+> 잠재적인 위험으로 인해 즉각적인 사용자의 주의를 요하는 중요한 내용입니다.
 
 > [!CAUTION]
-> Negative potential consequences of an action.
+> 행동의 부정적인 잠재적 결과입니다.
 ```
 
 > [!NOTE]
-> Highlights information that users should take into account, even when skimming.
+> 사용자가 훑어보더라도 알아야 할 정보를 강조합니다.
 
 > [!TIP]
-> Optional information to help a user be more successful.
+> 사용자가 더 성공할 수 있도록 도움이 되는 선택적 정보입니다.
 
 > [!IMPORTANT]
-> Crucial information necessary for users to succeed.
+> 사용자가 성공하기 위해 필수적인 중요 정보입니다.
 
 > [!WARNING]
-> Critical content demanding immediate user attention due to potential risks.
+> 잠재적인 위험으로 인해 즉각적인 사용자의 주의를 요하는 중요한 내용입니다.
 
 > [!CAUTION]
-> Negative potential consequences of an action.
+> 행동의 부정적인 잠재적 결과입니다.
 
-## Syntax Highlighting in Code Blocks
+## 코드 블록 내 구문 강조
 
-VitePress uses [Shiki](https://github.com/shikijs/shiki) to highlight language syntax in Markdown code blocks, using coloured text. Shiki supports a wide variety of programming languages. All you need to do is append a valid language alias to the beginning backticks for the code block:
+VitePress는 마크다운 코드 블록 내 언어 문법을 색상이 있는 텍스트로 강조하는 데 [Shiki](https://github.com/shikijs/shiki)를 사용합니다. Shiki는 다양한 프로그래밍 언어를 지원합니다. 코드 블록의 시작 백틱에 유효한 언어 별칭을 추가하기만 하면 됩니다:
 
-**Input**
+**입력**
 
-````
+````markdown
 ```js
 export default {
   name: 'MyComponent',
@@ -314,7 +314,7 @@ export default {
 ```
 ````
 
-````
+````markdown
 ```html
 <ul>
   <li v-for="todo in todos" :key="todo.id">
@@ -324,11 +324,11 @@ export default {
 ```
 ````
 
-**Output**
+**출력**
 
 ```js
 export default {
-  name: 'MyComponent'
+  name: 'MyComponent',
   // ...
 }
 ```
@@ -341,55 +341,55 @@ export default {
 </ul>
 ```
 
-A [list of valid languages](https://shiki.style/languages) is available on Shiki's repository.
+Shiki의 저장소에서 사용 가능한 [유효한 언어 목록](https://shiki.style/languages)이 제공됩니다.
 
-You may also customize syntax highlight theme in app config. Please see [`markdown` options](../reference/site-config#markdown) for more details.
+또한 응용 프로그램 구성에서 구문 강조 테마를 사용자 지정할 수 있습니다. 자세한 내용은 [`markdown` 옵션](../reference/site-config#markdown)을 참조하세요.
 
-## Line Highlighting in Code Blocks
+## 코드 블록에서 라인 강조
 
-**Input**
+**입력**
 
-````
+````markdown
 ```js{4}
 export default {
   data () {
     return {
-      msg: 'Highlighted!'
+      msg: '강조됨!'
     }
   }
 }
 ```
 ````
 
-**Output**
+**출력**
 
 ```js{4}
 export default {
-  data () {
+  data() {
     return {
-      msg: 'Highlighted!'
+      msg: '강조됨!'
     }
   }
 }
 ```
 
-In addition to a single line, you can also specify multiple single lines, ranges, or both:
+단일 라인 뿐만 아니라 여러 개의 단일 라인, 범위 또는 둘 다를 지정할 수도 있습니다:
 
-- Line ranges: for example `{5-8}`, `{3-10}`, `{10-17}`
-- Multiple single lines: for example `{4,7,9}`
-- Line ranges and single lines: for example `{4,7-13,16,23-27,40}`
+- 라인 범위: 예를 들어 `{5-8}`, `{3-10}`, `{10-17}`
+- 다수의 단일 라인: 예를 들어 `{4,7,9}`
+- 라인 범위 및 단일 라인: 예를 들어 `{4,7-13,16,23-27,40}`
 
-**Input**
+**입력**
 
-````
+````markdown
 ```js{1,4,6-8}
-export default { // Highlighted
+export default { // 강조됨
   data () {
     return {
-      msg: `Highlighted!
-      This line isn't highlighted,
-      but this and the next 2 are.`,
-      motd: 'VitePress is awesome',
+      msg: `강조됨!
+      이 줄은 강조되지 않습니다,
+      하지만 이 줄과 다음 2줄은 강조됩니다.`,
+      motd: 'VitePress는 멋져요',
       lorem: 'ipsum'
     }
   }
@@ -397,149 +397,149 @@ export default { // Highlighted
 ```
 ````
 
-**Output**
+**출력**
 
 ```js{1,4,6-8}
-export default { // Highlighted
+export default { // 강조됨
   data () {
     return {
-      msg: `Highlighted!
-      This line isn't highlighted,
-      but this and the next 2 are.`,
-      motd: 'VitePress is awesome',
+      msg: `강조됨!
+      이 줄은 강조되지 않습니다,
+      하지만 이 줄과 다음 2줄은 강조됩니다.`,
+      motd: 'VitePress는 멋져요',
       lorem: 'ipsum',
     }
   }
 }
 ```
 
-Alternatively, it's possible to highlight directly in the line by using the `// [!code highlight]` comment.
+또한, `// [!code highlight]` 주석을 사용하여 직접 라인에 강조를 추가할 수 있습니다.
 
-**Input**
+**입력**
 
-````
+````markdown
 ```js
 export default {
   data () {
     return {
-      msg: 'Highlighted!' // [!!code highlight]
+      msg: '강조됨!' // [!!code highlight]
     }
   }
 }
 ```
 ````
 
-**Output**
-
-```js
-export default {
-  data() {
-    return {
-      msg: 'Highlighted!' // [!code highlight]
-    }
-  }
-}
-```
-
-## Focus in Code Blocks
-
-Adding the `// [!code focus]` comment on a line will focus it and blur the other parts of the code.
-
-Additionally, you can define a number of lines to focus using `// [!code focus:<lines>]`.
-
-**Input**
-
-````
-```js
-export default {
-  data () {
-    return {
-      msg: 'Focused!' // [!!code focus]
-    }
-  }
-}
-```
-````
-
-**Output**
-
-```js
-export default {
-  data() {
-    return {
-      msg: 'Focused!' // [!code focus]
-    }
-  }
-}
-```
-
-## Colored Diffs in Code Blocks
-
-Adding the `// [!code --]` or `// [!code ++]` comments on a line will create a diff of that line, while keeping the colors of the codeblock.
-
-**Input**
-
-````
-```js
-export default {
-  data () {
-    return {
-      msg: 'Removed' // [!!code --]
-      msg: 'Added' // [!!code ++]
-    }
-  }
-}
-```
-````
-
-**Output**
+**출력**
 
 ```js
 export default {
   data () {
     return {
-      msg: 'Removed' // [!code --]
-      msg: 'Added' // [!code ++]
+      msg: '강조됨!' // [!code highlight]
     }
   }
 }
 ```
 
-## Errors and Warnings in Code Blocks
+## 코드 블록에서 포커싱
 
-Adding the `// [!code warning]` or `// [!code error]` comments on a line will color it accordingly.
+`// [!code focus]` 주석을 라인에 추가하면 해당 라인이 포커싱되고 코드의 다른 부분은 흐릿하게 처리됩니다.
 
-**Input**
+추가로, `// [!code focus:<lines>]`를 사용하여 포커싱할 라인 수를 정의할 수 있습니다.
 
-````
+**입력**
+
+````markdown
 ```js
 export default {
   data () {
     return {
-      msg: 'Error', // [!!code error]
-      msg: 'Warning' // [!!code warning]
+      msg: '포커싱됨!' // [!!code focus]
     }
   }
 }
 ```
 ````
 
-**Output**
+**출력**
 
 ```js
 export default {
-  data() {
+  data () {
     return {
-      msg: 'Error', // [!code error]
-      msg: 'Warning' // [!code warning]
+      msg: '포커싱됨!' // [!code focus]
     }
   }
 }
 ```
 
-## Line Numbers
+## 코드 블록 내 컬러 차이점
 
-You can enable line numbers for each code blocks via config:
+`// [!code --]` 또는 `// [!code ++]` 주석을 라인에 추가하면 해당 라인의 차이점을 나타내며, 코드 블록의 색상을 유지합니다.
+
+**입력**
+
+````markdown
+```js
+export default {
+  data () {
+    return {
+      msg: '삭제됨' // [!!code --]
+      msg: '추가됨' // [!!code ++]
+    }
+  }
+}
+```
+````
+
+**출력**
+
+```js
+export default {
+  data () {
+    return {
+      msg: '삭제됨' // [!code --]
+      msg: '추가됨' // [!code ++]
+    }
+  }
+}
+```
+
+## 코드 블록 내 오류 및 경고
+
+`// [!code warning]` 또는 `// [!code error]` 주석을 라인에 추가하면 해당 색깔에 따라 라인이 색칠됩니다.
+
+**입력**
+
+````markdown
+```js
+export default {
+  data () {
+    return {
+      msg: '오류', // [!!code error]
+      msg: '경고' // [!!code warning]
+    }
+  }
+}
+```
+````
+
+**출력**
+
+```js
+export default {
+  data () {
+    return {
+      msg: '오류', // [!code error]
+      msg: '경고' // [!code warning]
+    }
+  }
+}
+```
+
+## 라인 번호
+
+구성을 통해 각 코드 블록에 라인 번호를 활성화할 수 있습니다:
 
 ```js
 export default {
@@ -549,84 +549,84 @@ export default {
 }
 ```
 
-Please see [`markdown` options](../reference/site-config#markdown) for more details.
+자세한 내용은 [`markdown` 옵션](../reference/site-config#markdown)을 참조하세요.
 
-You can add `:line-numbers` / `:no-line-numbers` mark in your fenced code blocks to override the value set in config.
+또한 울타리 코드 블록에 `:line-numbers` / `:no-line-numbers` 마크를 추가하여 구성에서 설정한 값을 재정의할 수 있습니다.
 
-You can also customize the starting line number by adding `=` after `:line-numbers`. For example, `:line-numbers=2` means the line numbers in code blocks will start from `2`.
+또한 `:line-numbers` 뒤에 `=`를 추가하여 시작 라인 번호를 사용자 정의할 수 있습니다. 예를 들어, `:
 
-**Input**
+**입력**
 
 ````md
 ```ts {1}
-// line-numbers is disabled by default
+// 줄 번호는 기본적으로 비활성화되어 있음
 const line2 = 'This is line 2'
 const line3 = 'This is line 3'
 ```
 
 ```ts:line-numbers {1}
-// line-numbers is enabled
+// 줄 번호가 활성화됨
 const line2 = 'This is line 2'
 const line3 = 'This is line 3'
 ```
 
 ```ts:line-numbers=2 {1}
-// line-numbers is enabled and start from 2
+// 줄 번호가 활성화되고 2부터 시작함
 const line3 = 'This is line 3'
 const line4 = 'This is line 4'
 ```
 ````
 
-**Output**
+**출력**
 
 ```ts {1}
-// line-numbers is disabled by default
+// 줄 번호는 기본적으로 비활성화되어 있음
 const line2 = 'This is line 2'
 const line3 = 'This is line 3'
 ```
 
 ```ts:line-numbers {1}
-// line-numbers is enabled
+// 줄 번호가 활성화됨
 const line2 = 'This is line 2'
 const line3 = 'This is line 3'
 ```
 
 ```ts:line-numbers=2 {1}
-// line-numbers is enabled and start from 2
+// 줄 번호가 활성화되고 2부터 시작함
 const line3 = 'This is line 3'
 const line4 = 'This is line 4'
 ```
 
-## Import Code Snippets
+## 코드 스니펫 가져오기
 
-You can import code snippets from existing files via following syntax:
-
-```md
-<<< @/filepath
-```
-
-It also supports [line highlighting](#line-highlighting-in-code-blocks):
+다음 문법을 통해 기존 파일에서 코드 스니펫을 가져올 수 있습니다:
 
 ```md
-<<< @/filepath{highlightLines}
+<<< @/파일경로
 ```
 
-**Input**
+다음과 같이 [라인 하이라이팅](#line-highlighting-in-code-blocks)도 지원합니다:
+
+```md
+<<< @/파일경로{하이라이트할 라인}
+```
+
+**입력**
 
 ```md
 <<< @/snippets/snippet.js{2}
 ```
 
-**Code file**
+**코드 파일**
 
 <<< @/snippets/snippet.js
 
-**Output**
+**출력**
 
 <<< @/snippets/snippet.js{2}
 
 ::: tip
-The value of `@` corresponds to the source root. By default it's the VitePress project root, unless `srcDir` is configured. Alternatively, you can also import from relative paths:
+'@'의 값은 소스 루트에 해당합니다. 기본값은 VitePress 프로젝트 루트이지만, `srcDir`이 구성되어 있을 경우가 아니면 다릅니다. 상대 경로에서도 가져올 수 있습니다:
 
 ```md
 <<< ../snippets/snippet.js
@@ -634,43 +634,43 @@ The value of `@` corresponds to the source root. By default it's the VitePress p
 
 :::
 
-You can also use a [VS Code region](https://code.visualstudio.com/docs/editor/codebasics#_folding) to only include the corresponding part of the code file. You can provide a custom region name after a `#` following the filepath:
+특정 부분의 코드 파일만 포함하려면 [VS Code 리전](https://code.visualstudio.com/docs/editor/codebasics#_folding)을 사용할 수 있습니다. 파일 경로 뒤에 `#`을 사용한 다음 커스텀 리전 이름을 제공할 수 있습니다:
 
-**Input**
+**입력**
 
 ```md
 <<< @/snippets/snippet-with-region.js#snippet{1}
 ```
 
-**Code file**
+**코드 파일**
 
 <<< @/snippets/snippet-with-region.js
 
-**Output**
+**출력**
 
 <<< @/snippets/snippet-with-region.js#snippet{1}
 
-You can also specify the language inside the braces (`{}`) like this:
+괄호(`{}`) 안에 언어를 지정할 수도 있습니다:
 
 ```md
 <<< @/snippets/snippet.cs{c#}
 
-<!-- with line highlighting: -->
+<!-- 라인 하이라이팅과 함께: -->
 
 <<< @/snippets/snippet.cs{1,2,4-6 c#}
 
-<!-- with line numbers: -->
+<!-- 라인 번호와 함께: -->
 
 <<< @/snippets/snippet.cs{1,2,4-6 c#:line-numbers}
 ```
 
-This is helpful if source language cannot be inferred from your file extension.
+이는 파일 확장명에서 소스 언어를 유추할 수 없을 때 유용합니다.
 
-## Code Groups
+## 코드 그룹
 
-You can group multiple code blocks like this:
+다음과 같이 여러 코드 블록을 그룹화할 수 있습니다:
 
-**Input**
+**입력**
 
 ````md
 ::: code-group
@@ -699,7 +699,7 @@ export default config
 :::
 ````
 
-**Output**
+**출력**
 
 ::: code-group
 
@@ -726,121 +726,121 @@ export default config
 
 :::
 
-You can also [import snippets](#import-code-snippets) in code groups:
+코드 그룹에서 [스니펫 가져오기](#import-code-snippets)도 할 수 있습니다:
 
-**Input**
+**입력**
 
 ```md
 ::: code-group
 
-<!-- filename is used as title by default -->
+<!-- 기본적으로 파일 이름이 제목으로 사용됩니다 -->
 
 <<< @/snippets/snippet.js
 
-<!-- you can provide a custom one too -->
+<!-- 커스텀 제목도 제공할 수 있습니다 -->
 
-<<< @/snippets/snippet-with-region.js#snippet{1,2 ts:line-numbers} [snippet with region]
+<<< @/snippets/snippet-with-region.js#snippet{1,2 ts:line-numbers} [지역 스니펫]
 
 :::
 ```
 
-**Output**
+**출력**
 
 ::: code-group
 
 <<< @/snippets/snippet.js
 
-<<< @/snippets/snippet-with-region.js#snippet{1,2 ts:line-numbers} [snippet with region]
+<<< @/snippets/snippet-with-region.js#snippet{1,2 ts:line-numbers} [지역 스니펫]
 
 :::
 
-## Markdown File Inclusion
+## 마크다운 파일 포함
 
-You can include a markdown file in another markdown file, even nested.
+다른 마크다운 파일에 마크다운 파일을 포함시킬 수 있으며, 중첩도 가능합니다.
 
 ::: tip
-You can also prefix the markdown path with `@`, it will act as the source root. By default, it's the VitePress project root, unless `srcDir` is configured.
+마크다운 경로 앞에 '@'을 붙이면 소스 루트로 작용합니다. 기본값은 VitePress 프로젝트 루트이지만, `srcDir`이 구성되어 있을 경우가 아닙니다.
 :::
 
-For example, you can include a relative markdown file using this:
+예를 들어, 다음과 같이 상대적인 마크다운 파일을 포함할 수 있습니다:
 
-**Input**
+**입력**
 
 ```md
-# Docs
+# 문서
 
-## Basics
+## 기초
 
 <!--@include: ./parts/basics.md-->
 ```
 
-**Part file** (`parts/basics.md`)
+**부분 파일** (`parts/basics.md`)
 
 ```md
-Some getting started stuff.
+일부 시작하는 방법입니다.
 
-### Configuration
+### 구성
 
-Can be created using `.foorc.json`.
+`.foorc.json`을 사용하여 생성할 수 있습니다.
 ```
 
-**Equivalent code**
+**동일한 코드**
 
 ```md
-# Docs
+# 문서
 
-## Basics
+## 기초
 
-Some getting started stuff.
+일부 시작하는 방법입니다.
 
-### Configuration
+### 구성
 
-Can be created using `.foorc.json`.
+`.foorc.json`을 사용하여 생성할 수 있습니다.
 ```
 
-It also supports selecting a line range:
+라인 범위 선택도 지원합니다:
 
-**Input**
+**입력**
 
 ```md
-# Docs
+# 문서
 
-## Basics
+## 기초
 
 <!--@include: ./parts/basics.md{3,}-->
 ```
 
-**Part file** (`parts/basics.md`)
+**부분 파일** (`parts/basics.md`)
 
 ```md
-Some getting started stuff.
+일부 시작하는 방법입니다.
 
-### Configuration
+### 구성
 
-Can be created using `.foorc.json`.
+`.foorc.json`을 사용하여 생성할 수 있습니다.
 ```
 
-**Equivalent code**
+**동일한 코드**
 
 ```md
-# Docs
+# 문서
 
-## Basics
+## 기초
 
-### Configuration
+### 구성
 
-Can be created using `.foorc.json`.
+`.foorc.json`을 사용하여 생성할 수 있습니다.
 ```
 
-The format of the selected line range can be: `{3,}`, `{,10}`, `{1,10}`
+선택된 라인 범위의 형식은: `{3,}`, `{,10}`, `{1,10}`이 될 수 있습니다.
 
 ::: warning
-Note that this does not throw errors if your file is not present. Hence, when using this feature make sure that the contents are being rendered as expected.
+파일이 없는 경우 오류를 발생시키지 않으니, 이 기능을 사용할 때는 내용이 예상대로 렌더링되고 있는지 확인해야 합니다.
 :::
 
-## Math Equations
+## 수식
 
-This is currently opt-in. To enable it, you need to install `markdown-it-mathjax3` and set `markdown.math` to `true` in your config file:
+현재 선택 사항입니다. 활성화하려면 `markdown-it-mathjax3`를 설치하고 설정 파일에서 `markdown.math`를 `true`로 설정해야 합니다:
 
 ```sh
 npm add -D markdown-it-mathjax3
@@ -855,52 +855,52 @@ export default {
 }
 ```
 
-**Input**
+**입력**
 
 ```md
-When $a \ne 0$, there are two solutions to $(ax^2 + bx + c = 0)$ and they are
-$$ x = {-b \pm \sqrt{b^2-4ac} \over 2a} $$
+$a \ne 0$일 때, $(ax^2 + bx + c = 0)$의 두 해는
+$$ x = {-b \pm \sqrt{b^2-4ac} \over 2a} $$입니다
 
-**Maxwell's equations:**
+**맥스웰 방정식:**
 
-| equation                                                                                                                                                                  | description                                                                            |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| $\nabla \cdot \vec{\mathbf{B}}  = 0$                                                                                                                                      | divergence of $\vec{\mathbf{B}}$ is zero                                               |
-| $\nabla \times \vec{\mathbf{E}}\, +\, \frac1c\, \frac{\partial\vec{\mathbf{B}}}{\partial t}  = \vec{\mathbf{0}}$                                                          | curl of $\vec{\mathbf{E}}$ is proportional to the rate of change of $\vec{\mathbf{B}}$ |
-| $\nabla \times \vec{\mathbf{B}} -\, \frac1c\, \frac{\partial\vec{\mathbf{E}}}{\partial t} = \frac{4\pi}{c}\vec{\mathbf{j}}    \nabla \cdot \vec{\mathbf{E}} = 4 \pi \rho$ | _wha?_                                                                                 |
+| 방정식                                                                                                                                                                  | 설명                                                                                |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| $\nabla \cdot \vec{\mathbf{B}}  = 0$                                                                                                                                    | $\vec{\mathbf{B}}$의 발산은 0입니다                                                 |
+| $\nabla \times \vec{\mathbf{E}}\, +\, \frac1c\, \frac{\partial\vec{\mathbf{B}}}{\partial t}  = \vec{\mathbf{0}}$                                                        | $\vec{\mathbf{E}}$의 회전은 $\vec{\mathbf{B}}$의 시간에 따른 변화율에 비례합니다     |
+| $\nabla \times \vec{\mathbf{B}} -\, \frac1c\, \frac{\partial\vec{\mathbf{E}}}{\partial t} = \frac{4\pi}{c}\vec{\mathbf{j}}    \nabla \cdot \vec{\mathbf{E}} = 4 \pi \rho$ | _wha?_                                                                               |
 ```
 
-**Output**
+**출력**
 
-When $a \ne 0$, there are two solutions to $(ax^2 + bx + c = 0)$ and they are
+$a \ne 0$ 일 때, $(ax^2 + bx + c = 0)$의 두 해는 다음과 같습니다:
 $$ x = {-b \pm \sqrt{b^2-4ac} \over 2a} $$
 
-**Maxwell's equations:**
+**맥스웰 방정식:**
 
-| equation                                                                                                                                                                  | description                                                                            |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| $\nabla \cdot \vec{\mathbf{B}}  = 0$                                                                                                                                      | divergence of $\vec{\mathbf{B}}$ is zero                                               |
-| $\nabla \times \vec{\mathbf{E}}\, +\, \frac1c\, \frac{\partial\vec{\mathbf{B}}}{\partial t}  = \vec{\mathbf{0}}$                                                          | curl of $\vec{\mathbf{E}}$ is proportional to the rate of change of $\vec{\mathbf{B}}$ |
-| $\nabla \times \vec{\mathbf{B}} -\, \frac1c\, \frac{\partial\vec{\mathbf{E}}}{\partial t} = \frac{4\pi}{c}\vec{\mathbf{j}}    \nabla \cdot \vec{\mathbf{E}} = 4 \pi \rho$ | _wha?_                                                                                 |
+| 방정식                                                                                                                                                                  | 설명                                                                                |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| $\nabla \cdot \vec{\mathbf{B}}  = 0$                                                                                                                                    | $\vec{\mathbf{B}}$의 발산은 0입니다                                                 |
+| $\nabla \times \vec{\mathbf{E}}\, +\, \frac1c\, \frac{\partial\vec{\mathbf{B}}}{\partial t}  = \vec{\mathbf{0}}$                                                        | $\vec{\mathbf{E}}$의 회전은 $\vec{\mathbf{B}}$의 시간에 따른 변화율에 비례합니다     |
+| $\nabla \times \vec{\mathbf{B}} -\, \frac1c\, \frac{\partial\vec{\mathbf{E}}}{\partial t} = \frac{4\pi}{c}\vec{\mathbf{j}}    \nabla \cdot \vec{\mathbf{E}} = 4 \pi \rho$ | _wha?_                                                                               |
 
-## Image Lazy Loading
+## 이미지 지연 로딩
 
-You can enable lazy loading for each image added via markdown by setting `lazyLoading` to `true` in your config file:
+마크다운을 통해 추가된 각 이미지에 대해 지연 로딩을 활성화하려면 설정 파일에서 `lazyLoading`을 `true`로 설정하세요:
 
 ```js
 export default {
   markdown: {
     image: {
-      // image lazy loading is disabled by default
+      // 이미지 지연 로딩은 기본적으로 비활성화 되어 있습니다
       lazyLoading: true
     }
   }
 }
 ```
 
-## Advanced Configuration
+## 고급 설정
 
-VitePress uses [markdown-it](https://github.com/markdown-it/markdown-it) as the Markdown renderer. A lot of the extensions above are implemented via custom plugins. You can further customize the `markdown-it` instance using the `markdown` option in `.vitepress/config.js`:
+VitePress는 마크다운 렌더링을 위해 [markdown-it](https://github.com/markdown-it/markdown-it)을 사용합니다. 위의 확장 프로그램 대부분은 커스텀 플러그인을 통해 구현됩니다. `.vitepress/config.js`의 `markdown` 옵션을 사용하여 `markdown-it` 인스턴스를 더욱 커스터마이징할 수 있습니다:
 
 ```js
 import { defineConfig } from 'vitepress'
@@ -909,22 +909,22 @@ import markdownItFoo from 'markdown-it-foo'
 
 export default defineConfig({
   markdown: {
-    // options for markdown-it-anchor
+    // markdown-it-anchor의 옵션
     // https://github.com/valeriangalliat/markdown-it-anchor#usage
     anchor: {
       permalink: markdownItAnchor.permalink.headerLink()
     },
 
-    // options for @mdit-vue/plugin-toc
+    // @mdit-vue/plugin-toc의 옵션
     // https://github.com/mdit-vue/mdit-vue/tree/main/packages/plugin-toc#options
     toc: { level: [1, 2] },
 
     config: (md) => {
-      // use more markdown-it plugins!
+      // 더 많은 markdown-it 플러그인을 사용!
       md.use(markdownItFoo)
     }
   }
 })
 ```
 
-See full list of configurable properties in [Config Reference: App Config](../reference/site-config#markdown).
+[설정 참조: 앱 설정](../reference/site-config#markdown)에서 구성 가능한 속성의 전체 목록을 확인할 수 있습니다.
