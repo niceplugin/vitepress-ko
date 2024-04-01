@@ -5,8 +5,8 @@ const require = createRequire(import.meta.url)
 const pkg = require('vitepress/package.json')
 
 export const ko = defineConfig({
-  lang: 'en-US',
-  description: 'Vite & Vue powered static site generator.',
+  lang: 'ko',
+  description: 'Vite 및 Vue 기반 정적 사이트 생성기.',
 
   themeConfig: {
     nav: nav(),
