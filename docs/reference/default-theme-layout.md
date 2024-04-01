@@ -1,6 +1,6 @@
-# Layout
+# 레이아웃
 
-You may choose the page layout by setting `layout` option to the page [frontmatter](./frontmatter-config). There are 3 layout options, `doc`, `page`, and `home`. If nothing is specified, then the page is treated as `doc` page.
+페이지 [프런트매터](./frontmatter-config)에 `layout` 옵션을 설정함으로써 페이지 레이아웃을 선택할 수 있습니다. `doc`, `page`, `home`의 세 가지 레이아웃 옵션이 있습니다. 아무것도 지정하지 않으면, 해당 페이지는 `doc` 페이지로 처리됩니다.
 
 ```yaml
 ---
@@ -8,38 +8,38 @@ layout: doc
 ---
 ```
 
-## Doc Layout
+## Doc 레이아웃
 
-Option `doc` is the default layout and it styles the whole Markdown content into "documentation" look. It works by wrapping whole content within `vp-doc` css class, and applying styles to elements underneath it.
+`doc` 옵션은 기본 레이아웃이며, 전체 마크다운 내용을 "문서화"된 모양으로 스타일링합니다. 이것은 전체 내용을 `vp-doc` css 클래스로 감싸고, 그 아래 요소들에 스타일을 적용함으로써 작동합니다.
 
-Almost all generic elements such as `p`, or `h2` get special styling. Therefore, keep in mind that if you add any custom HTML inside a Markdown content, those will get affected by those styles as well.
+`p`나 `h2`와 같은 거의 모든 일반 요소들은 특별한 스타일링을 받습니다. 따라서 마크다운 내용 내에 사용자 정의 HTML을 추가할 경우, 이러한 스타일들에 영향을 받게 될 것임을 명심하세요.
 
-It also provides documentation specific features listed below. These features are only enabled in this layout.
+또한 아래 나열된 문서화 특정 기능들을 제공합니다. 이 기능들은 이 레이아웃에서만 활성화됩니다.
 
-- Edit Link
-- Prev Next Link
-- Outline
-- [Carbon Ads](./default-theme-carbon-ads)
+- 편집 링크
+- 이전/다음 링크
+- 개요
+- [카본 광고](./default-theme-carbon-ads)
 
-## Page Layout
+## 페이지 레이아웃
 
-Option `page` is treated as "blank page". The Markdown will still be parsed, and all of the [Markdown Extensions](../guide/markdown) work as same as `doc` layout, but it wouldn't get any default stylings.
+`page` 옵션은 "빈 페이지"로 처리됩니다. 마크다운은 여전히 파싱되며, 모든 [마크다운 확장](../guide/markdown) 기능은 `doc` 레이아웃과 동일하게 작동하지만, 기본 스타일은 적용받지 않습니다.
 
-The page layout will let you style everything by you without VitePress theme affecting the markup. This is useful when you want to create your own custom page.
+페이지 레이아웃을 통해 VitePress 테마의 마크업 영향을 받지 않고 모든 것을 직접 스타일링할 수 있습니다. 이는 사용자 정의 페이지를 생성하고 싶을 때 유용합니다.
 
-Note that even in this layout, sidebar will still show up if the page has a matching sidebar config.
+이 레이아웃에서도 페이지가 일치하는 사이드바 구성이 있는 경우 여전히 사이드바가 표시됨을 유의하세요.
 
-## Home Layout
+## 홈 레이아웃
 
-Option `home` will generate templated "Homepage". In this layout, you can set extra options such as `hero` and `features` to customize the content further. Please visit [Default Theme: Home Page](./default-theme-home-page) for more details.
+`home` 옵션은 템플릿화된 "홈페이지"를 생성합니다. 이 레이아웃에서는 `hero` 및 `features`와 같은 추가 옵션을 설정해 컨텐츠를 더 자세히 커스터마이즈할 수 있습니다. 자세한 내용은 [기본 테마: 홈 페이지](./default-theme-home-page)를 방문해주세요.
 
-## No Layout
+## 레이아웃 없음
 
-If you don't want any layout, you can pass `layout: false` through frontmatter. This option is helpful if you want a fully-customizable landing page (without any sidebar, navbar, or footer by default).
+레이아웃을 원하지 않는 경우, 프런트매터를 통해 `layout: false`를 전달할 수 있습니다. 이 옵션은 완전히 맞춤화된 랜딩 페이지(기본적으로 사이드바, 내비게이션 바, 또는 푸터 없음)를 원할 때 유용합니다.
 
-## Custom Layout
+## 사용자 정의 레이아웃
 
-You can also use a custom layout:
+또한 사용자 정의 레이아웃을 사용할 수 있습니다:
 
 ```md
 ---
@@ -47,7 +47,7 @@ layout: foo
 ---
 ```
 
-This will look for a component named `foo` registered in context. For example, you can register your component globally in `.vitepress/theme/index.ts`:
+이것은 컨텍스트에 등록된 `foo`라는 이름의 컴포넌트를 찾습니다. 예를 들어, `.vitepress/theme/index.ts`에서 컴포넌트를 전역으로 등록할 수 있습니다:
 
 ```ts
 import DefaultTheme from 'vitepress/theme'

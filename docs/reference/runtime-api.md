@@ -1,35 +1,35 @@
-# Runtime API
+# 런타임 API
 
-VitePress offers several built-in APIs to let you access app data. VitePress also comes with a few built-in components that can be used globally.
+VitePress는 앱 데이터에 액세스할 수 있도록 몇 가지 내장 API를 제공합니다. 또한 전역적으로 사용할 수 있는 몇 가지 내장 컴포넌트도 제공합니다.
 
-The helper methods are globally importable from `vitepress` and are typically used in custom theme Vue components. However, they are also usable inside `.md` pages because markdown files are compiled into Vue [Single-File Components](https://vuejs.org/guide/scaling-up/sfc.html).
+도우미 메서드는 `vitepress`에서 전역적으로 가져올 수 있으며 일반적으로 사용자 지정 테마 Vue 컴포넌트에서 사용됩니다. 그러나 마크다운 파일이 Vue [단일 파일 컴포넌트](https://vuejs.org/guide/scaling-up/sfc.html)로 컴파일되기 때문에 `.md` 페이지 내에서도 사용할 수 있습니다.
 
-Methods that start with `use*` indicates that it is a [Vue 3 Composition API](https://vuejs.org/guide/introduction.html#composition-api) function ("Composable") that can only be used inside `setup()` or `<script setup>`.
+`use*`로 시작하는 메서드는 `setup()` 또는 `<script setup>` 내에서만 사용할 수 있는 [Vue 3 구성 API](https://vuejs.org/guide/introduction.html#composition-api) 함수("컴퍼저블")임을 나타냅니다.
 
-## `useData` <Badge type="info" text="composable" />
+## `useData` <Badge type="info" text="컴퍼저블" />
 
-Returns page-specific data. The returned object has the following type:
+페이지별 데이터를 반환합니다. 반환된 객체는 다음 유형을 가집니다:
 
 ```ts
 interface VitePressData<T = any> {
   /**
-   * Site-level metadata
+   * 사이트 수준 메타데이터
    */
   site: Ref<SiteData<T>>
   /**
-   * themeConfig from .vitepress/config.js
+   * .vitepress/config.js에서의 themeConfig
    */
   theme: Ref<T>
   /**
-   * Page-level metadata
+   * 페이지 수준 메타데이터
    */
   page: Ref<PageData>
   /**
-   * Page frontmatter
+   * 페이지 앞부분 메타데이터
    */
   frontmatter: Ref<PageData['frontmatter']>
   /**
-   * Dynamic route params
+   * 동적 라우트 매개변수
    */
   params: Ref<PageData['params']>
   title: Ref<string>
@@ -54,7 +54,7 @@ interface PageData {
 }
 ```
 
-**Example:**
+**예시:**
 
 ```vue
 <script setup>
@@ -68,9 +68,9 @@ const { theme } = useData()
 </template>
 ```
 
-## `useRoute` <Badge type="info" text="composable" />
+## `useRoute` <Badge type="info" text="컴퍼저블" />
 
-Returns the current route object with the following type:
+현재 라우트 객체를 다음 유형으로 반환합니다:
 
 ```ts
 interface Route {
@@ -80,60 +80,60 @@ interface Route {
 }
 ```
 
-## `useRouter` <Badge type="info" text="composable" />
+## `useRouter` <Badge type="info" text="컴퍼저블" />
 
-Returns the VitePress router instance so you can programmatically navigate to another page.
+다른 페이지로 프로그래밍 방식으로 이동할 수 있도록 VitePress 라우터 인스턴스를 반환합니다.
 
 ```ts
 interface Router {
   /**
-   * Current route.
+   * 현재 route.
    */
   route: Route
   /**
-   * Navigate to a new URL.
+   * 새 URL로 이동합니다.
    */
   go: (to?: string) => Promise<void>
   /**
-   * Called before the route changes. Return `false` to cancel the navigation.
+   * 라우트가 변경되기 전에 호출됩니다. 이동을 취소하려면 `false`를 반환하십시오.
    */
   onBeforeRouteChange?: (to: string) => Awaitable<void | boolean>
   /**
-   * Called before the page component is loaded (after the history state is
-   * updated). Return `false` to cancel the navigation.
+   * 페이지 컴포넌트가 로드되기 전(히스토리 상태가 업데이트된 후)에 호출됩니다.
+   * 이동을 취소하려면 `false`를 반환하십시오.
    */
   onBeforePageLoad?: (to: string) => Awaitable<void | boolean>
   /**
-   * Called after the route changes.
+   * 라우트가 변경된 후 호출됩니다.
    */
   onAfterRouteChanged?: (to: string) => Awaitable<void>
 }
 ```
 
-## `withBase` <Badge type="info" text="helper" />
+## `withBase` <Badge type="info" text="도움" />
 
-- **Type**: `(path: string) => string`
+- **타입**: `(path: string) => string`
 
-Appends the configured [`base`](./site-config#base) to a given URL path. Also see [Base URL](../guide/asset-handling#base-url).
+설정된 [`base`](./site-config#base)를 주어진 URL 경로에 추가합니다. [Base URL](../guide/asset-handling#base-url)도 참조하십시오.
 
-## `<Content />` <Badge type="info" text="component" />
+## `<Content />` <Badge type="info" text="컴포넌트" />
 
-The `<Content />` component displays the rendered markdown contents. Useful [when creating your own theme](../guide/custom-theme).
+`<Content />` 컴포넌트는 렌더링된 마크다운 내용을 표시합니다. [자신만의 테마를 만들 때](../guide/custom-theme) 유용합니다.
 
 ```vue
 <template>
-  <h1>Custom Layout!</h1>
+  <h1>커스텀 레이아웃!</h1>
   <Content />
 </template>
 ```
 
-## `<ClientOnly />` <Badge type="info" text="component" />
+## `<ClientOnly />` <Badge type="info" text="컴포넌트" />
 
-The `<ClientOnly />` component renders its slot only at client side.
+`<ClientOnly />` 컴포넌트는 클라이언트 측에서만 슬롯을 렌더링합니다.
 
-Because VitePress applications are server-rendered in Node.js when generating static builds, any Vue usage must conform to the universal code requirements. In short, make sure to only access Browser / DOM APIs in beforeMount or mounted hooks.
+VitePress 애플리케이션은 정적 빌드를 생성할 때 Node.js에서 서버 렌더링되므로, 모든 Vue 사용은 범용 코드 요구 사항에 부합해야 합니다. 간단히 말해서, beforeMount 또는 mounted 훅에서만 브라우저 / DOM API에 액세스하십시오.
 
-If you are using or demoing components that are not SSR-friendly (for example, contain custom directives), you can wrap them inside the `ClientOnly` component.
+SSR 친화적이지 않은 컴포넌트(예: 커스텀 지시문이 포함된 경우)를 사용하거나 시연하는 경우 해당 컴포넌트를 `ClientOnly` 컴포넌트 안에 포함시킬 수 있습니다.
 
 ```vue-html
 <ClientOnly>
@@ -141,23 +141,23 @@ If you are using or demoing components that are not SSR-friendly (for example, c
 </ClientOnly>
 ```
 
-- Related: [SSR Compatibility](../guide/ssr-compat)
+- 관련: [SSR 호환성](../guide/ssr-compat)
 
-## `$frontmatter` <Badge type="info" text="template global" />
+## `$frontmatter` <Badge type="info" text="템플릿 전역" />
 
-Directly access current page's [frontmatter](../guide/frontmatter) data in Vue expressions.
+Vue 표현식에서 현재 페이지의 [앞부분 메타데이터](../guide/frontmatter)를 직접 액세스합니다.
 
 ```md
 ---
-title: Hello
+title: 안녕하세요
 ---
 
 # {{ $frontmatter.title }}
 ```
 
-## `$params` <Badge type="info" text="template global" />
+## `$params` <Badge type="info" text="템플릿 전역" />
 
-Directly access current page's [dynamic route params](../guide/routing#dynamic-routes) in Vue expressions.
+Vue 표현식에서 현재 페이지의 [동적 라우트 매개변수](../guide/routing#dynamic-routes)를 직접 액세스합니다.
 
 ```md
 - package name: {{ $params.pkg }}

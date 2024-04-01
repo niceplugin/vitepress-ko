@@ -2,11 +2,11 @@
 outline: deep
 ---
 
-# Search
+# 검색
 
-## Local Search
+## 로컬 검색
 
-VitePress supports fuzzy full-text search using a in-browser index thanks to [minisearch](https://github.com/lucaong/minisearch/). To enable this feature, simply set the `themeConfig.search.provider` option to `'local'` in your `.vitepress/config.ts` file:
+VitePress는 [minisearch](https://github.com/lucaong/minisearch/)를 통해 브라우저 내 인덱스를 사용한 퍼지 전문 검색을 지원합니다. 이 기능을 활성화하려면, `.vitepress/config.ts` 파일 내에서 `themeConfig.search.provider` 옵션을 `'local'`로 설정하면 됩니다:
 
 ```ts
 import { defineConfig } from 'vitepress'
@@ -20,15 +20,15 @@ export default defineConfig({
 })
 ```
 
-Example result:
+예시 결과:
 
-![screenshot of the search modal](/search.png)
+![검색 모달의 스크린샷](/search.png)
 
-Alternatively, you can use [Algolia DocSearch](#algolia-search) or some community plugins like <https://www.npmjs.com/package/vitepress-plugin-search> or <https://www.npmjs.com/package/vitepress-plugin-pagefind>.
+또는, [Algolia DocSearch](#algolia-search)나 <https://www.npmjs.com/package/vitepress-plugin-search>, <https://www.npmjs.com/package/vitepress-plugin-pagefind>과 같은 커뮤니티 플러그인을 사용할 수 있습니다.
 
 ### i18n {#local-search-i18n}
 
-You can use a config like this to use multilingual search:
+다국어 검색을 사용하려면 다음과 같은 설정을 사용할 수 있습니다:
 
 ```ts
 import { defineConfig } from 'vitepress'
@@ -62,9 +62,9 @@ export default defineConfig({
 })
 ```
 
-### miniSearch options
+### miniSearch 옵션
 
-You can configure MiniSearch like this:
+다음과 같이 MiniSearch를 구성할 수 있습니다:
 
 ```ts
 import { defineConfig } from 'vitepress'
@@ -96,11 +96,11 @@ export default defineConfig({
 })
 ```
 
-Learn more in [MiniSearch docs](https://lucaong.github.io/minisearch/classes/MiniSearch.MiniSearch.html).
+[MiniSearch 문서](https://lucaong.github.io/minisearch/classes/MiniSearch.MiniSearch.html)에서 더 많은 정보를 얻을 수 있습니다.
 
-### Custom content renderer
+### 사용자 정의 콘텐츠 렌더러
 
-You can customize the function used to render the markdown content before indexing it:
+색인 생성 전에 마크다운 콘텐츠를 렌더링하는 데 사용되는 함수를 커스터마이즈할 수 있습니다:
 
 ```ts
 import { defineConfig } from 'vitepress'
@@ -124,11 +124,11 @@ export default defineConfig({
 })
 ```
 
-This function will be stripped from client-side site data, so you can use Node.js APIs in it.
+이 함수는 클라이언트 사이드 사이트 데이터에서 제거될 것이므로, 여기서 Node.js API를 사용할 수 있습니다.
 
-#### Example: Excluding pages from search
+#### 예시: 검색에서 페이지 제외
 
-You can exclude pages from search by adding `search: false` to the frontmatter of the page. Alternatively:
+페이지에서 `search: false`를 프론트매터에 추가하여 검색에서 페이지를 제외할 수 있습니다. 또는 다음과 같이 합니다:
 
 ```ts
 import { defineConfig } from 'vitepress'
@@ -150,11 +150,11 @@ export default defineConfig({
 })
 ```
 
-::: warning Note
-In case a custom `_render` function is provided, you need to handle the `search: false` frontmatter yourself. Also, the `env` object won't be completely populated before `md.render` is called, so any checks on optional `env` properties like `frontmatter` should be done after that.
+::: warning 참고
+사용자 정의 `_render` 함수를 제공하는 경우, `search: false` 프론트매터를 직접 처리해야 합니다. 또한, `md.render`가 호출되기 전에는 `env` 객체가 완전히 채워지지 않으므로, `frontmatter`와 같은 선택적 `env` 속성에 대한 검사는 그 이후에 수행해야 합니다.
 :::
 
-#### Example: Transforming content - adding anchors
+#### 예시: 콘텐츠 변환 - 앵커 추가
 
 ```ts
 import { defineConfig } from 'vitepress'
@@ -176,9 +176,9 @@ export default defineConfig({
 })
 ```
 
-## Algolia Search
+## Algolia 검색
 
-VitePress supports searching your docs site using [Algolia DocSearch](https://docsearch.algolia.com/docs/what-is-docsearch). Refer their getting started guide. In your `.vitepress/config.ts` you'll need to provide at least the following to make it work:
+VitePress는 [Algolia DocSearch](https://docsearch.algolia.com/docs/what-is-docsearch)를 사용하여 문서 사이트 검색을 지원합니다. 시작 가이드를 참조하세요. 작동하게 하려면 `.vitepress/config.ts`에서 최소한 다음 정보를 제공해야 합니다:
 
 ```ts
 import { defineConfig } from 'vitepress'
@@ -199,7 +199,7 @@ export default defineConfig({
 
 ### i18n {#algolia-search-i18n}
 
-You can use a config like this to use multilingual search:
+다국어 검색을 사용하려면 다음과 같은 설정을 사용할 수 있습니다:
 
 ```ts
 import { defineConfig } from 'vitepress'
@@ -261,11 +261,11 @@ export default defineConfig({
 })
 ```
 
-[These options](https://github.com/vuejs/vitepress/blob/main/types/docsearch.d.ts) can be overridden. Refer official Algolia docs to learn more about them.
+[이 옵션들](https://github.com/vuejs/vitepress/blob/main/types/docsearch.d.ts)은 덮어쓸 수 있습니다. 공식 Algolia 문서에서 더 많은 정보를 알아보세요.
 
-### Crawler Config
+### 크롤러 구성
 
-Here is an example config based on what this site uses:
+이 사이트가 사용하는 것을 기반으로 한 예제 구성입니다:
 
 ```ts
 new Crawler({
@@ -278,7 +278,7 @@ new Crawler({
   exclusionPatterns: [],
   ignoreCanonicalTo: false,
   discoveryPatterns: ['https://vitepress.dev/**'],
-  schedule: 'at 05:10 on Saturday',
+  schedule: '매주 토요일 05:10에',
   actions: [
     {
       indexName: 'vitepress',
@@ -290,7 +290,7 @@ new Crawler({
             content: '.content p, .content li',
             lvl0: {
               selectors: '',
-              defaultValue: 'Documentation'
+              defaultValue: '문서'
             },
             lvl2: '.content h2',
             lvl3: '.content h3',
