@@ -1,14 +1,14 @@
-# Default Theme Config
+# 기본 테마 설정
 
-Theme config lets you customize your theme. You can define theme config via the `themeConfig` option in the config file:
+테마 설정을 통해 테마를 사용자 정의할 수 있습니다. 설정 파일의 `themeConfig` 옵션을 통해 테마 설정을 정의할 수 있습니다:
 
 ```ts
 export default {
   lang: 'en-US',
   title: 'VitePress',
-  description: 'Vite & Vue powered static site generator.',
+  description: 'Vite & Vue로 구동되는 정적 사이트 생성기.',
 
-  // Theme related configurations.
+  // 테마 관련 설정.
   themeConfig: {
     logo: '/logo.svg',
     nav: [...],
@@ -17,19 +17,19 @@ export default {
 }
 ```
 
-**The options documented on this page only apply to the default theme.** Different themes expect different theme config. When using a custom theme, the theme config object will be passed to the theme so the theme can define conditional behavior based on it.
+**이 페이지에 문서화된 옵션은 기본 테마에만 적용됩니다.** 다른 테마는 다른 테마 설정을 기대합니다. 커스텀 테마를 사용할 때, 테마 설정 객체는 테마로 전달되어 테마가 그것에 따라 조건적인 동작을 정의할 수 있습니다.
 
 ## i18nRouting
 
-- Type: `boolean`
+- 타입: `boolean`
 
-Changing locale to say `zh` will change the URL from `/foo` (or `/en/foo/`) to `/zh/foo`. You can disable this behavior by setting `themeConfig.i18nRouting` to `false`.
+예를 들어 `zh`로 로케일을 변경하면 URL이 `/foo` (또는 `/en/foo/`)에서 `/zh/foo`로 변경됩니다. 이 동작을 비활성화하려면 `themeConfig.i18nRouting`을 `false`로 설정하세요.
 
 ## logo
 
-- Type: `ThemeableImage`
+- 타입: `ThemeableImage`
 
-Logo file to display in nav bar, right before the site title. Accepts a path string, or an object to set a different logo for light/dark mode.
+내비게이션 바에 사이트 제목 바로 앞에 표시되는 로고 파일입니다. 경로 문자열을 받거나, 밝은/어두운 모드에 따라 다른 로고를 설정하기 위해 객체를 사용할 수 있습니다.
 
 ```ts
 export default {
@@ -48,9 +48,9 @@ type ThemeableImage =
 
 ## siteTitle
 
-- Type: `string | false`
+- 타입: `string | false`
 
-You can customize this item to replace the default site title (`title` in app config) in nav. When set to `false`, title in nav will be disabled. Useful when you have `logo` that already contains the site title text.
+내비게이션에서 기본 사이트 제목(`app config`의 `title`)을 대체하기 위해 이 항목을 사용자 정의할 수 있습니다. `false`로 설정하면 내비게이션의 제목이 비활성화됩니다. `logo`가 이미 사이트 제목 텍스트를 포함하고 있을 때 유용합니다.
 
 ```ts
 export default {
@@ -62,21 +62,21 @@ export default {
 
 ## nav
 
-- Type: `NavItem`
+- 타입: `NavItem`
 
-The configuration for the nav menu item. More details in [Default Theme: Nav](./default-theme-nav#navigation-links).
+내비게이션 메뉴 항목의 설정입니다. 자세한 내용은 [기본 테마: Nav](./default-theme-nav#navigation-links)에서 확인할 수 있습니다.
 
 ```ts
 export default {
   themeConfig: {
     nav: [
-      { text: 'Guide', link: '/guide' },
+      { text: '가이드', link: '/guide' },
       {
-        text: 'Dropdown Menu',
+        text: '드롭다운 메뉴',
         items: [
-          { text: 'Item A', link: '/item-1' },
-          { text: 'Item B', link: '/item-2' },
-          { text: 'Item C', link: '/item-3' }
+          { text: '항목 A', link: '/item-1' },
+          { text: '항목 B', link: '/item-2' },
+          { text: '항목 C', link: '/item-3' }
         ]
       }
     ]
@@ -110,19 +110,19 @@ interface NavItemWithChildren {
 
 ## sidebar
 
-- Type: `Sidebar`
+- 타입: `Sidebar`
 
-The configuration for the sidebar menu item. More details in [Default Theme: Sidebar](./default-theme-sidebar).
+사이드바 메뉴 항목의 설정입니다. 자세한 내용은 [기본 테마: Sidebar](./default-theme-sidebar)에서 확인할 수 있습니다.
 
 ```ts
 export default {
   themeConfig: {
     sidebar: [
       {
-        text: 'Guide',
+        text: '가이드',
         items: [
-          { text: 'Introduction', link: '/introduction' },
-          { text: 'Getting Started', link: '/getting-started' },
+          { text: '소개', link: '/introduction' },
+          { text: '시작하기', link: '/getting-started' },
           ...
         ]
       }
@@ -140,26 +140,26 @@ export interface SidebarMulti {
 
 export type SidebarItem = {
   /**
-   * The text label of the item.
+   * 항목의 텍스트 레이블.
    */
   text?: string
 
   /**
-   * The link of the item.
+   * 항목의 링크.
    */
   link?: string
 
   /**
-   * The children of the item.
+   * 항목의 자식들.
    */
   items?: SidebarItem[]
 
   /**
-   * If not specified, group is not collapsible.
+   * 명시되지 않은 경우, 그룹은 접을 수 없습니다.
    *
-   * If `true`, group is collapsible and collapsed by default
+   * `true`이면, 그룹은 접을 수 있고 기본적으로 접혀 있습니다
    *
-   * If `false`, group is collapsible but expanded by default
+   * `false`이면, 그룹은 접을 수 있지만 기본적으로 펼쳐져 있습니다
    */
   collapsed?: boolean
 }
@@ -167,39 +167,39 @@ export type SidebarItem = {
 
 ## aside
 
-- Type: `boolean | 'left'`
-- Default: `true`
-- Can be overridden per page via [frontmatter](./frontmatter-config#aside)
+- 타입: `boolean | 'left'`
+- 기본값: `true`
+- [frontmatter](./frontmatter-config#aside)를 통해 페이지별로 재정의 가능
 
-Setting this value to `false` prevents rendering of aside container.\
-Setting this value to `true` renders the aside to the right.\
-Setting this value to `left` renders the aside to the left.
+이 값을 `false`로 설정하면 aside 컨테이너의 렌더링을 방지합니다.\
+이 값을 `true`로 설정하면 aside를 오른쪽에 렌더링합니다.\
+이 값을 `left`로 설정하면 aside를 왼쪽에 렌더링합니다.
 
-If you want to disable it for all viewports, you should use `outline: false` instead.
+모든 뷰포트에 대해 비활성화하려면 `outline: false`를 사용해야 합니다.
 
 ## outline
 
-- Type: `Outline | Outline['level'] | false`
-- Level can be overridden per page via [frontmatter](./frontmatter-config#outline)
+- 타입: `Outline | Outline['level'] | false`
+- [frontmatter](./frontmatter-config#outline)를 통해 페이지별로 레벨 재정의 가능
 
-Setting this value to `false` prevents rendering of outline container. Refer this interface for more details:
+이 값을 `false`로 설정하면 윤곽선 컨테이너의 렌더링을 방지합니다. 자세한 내용은 이 인터페이스를 참조하세요:
 
 ```ts
 interface Outline {
   /**
-   * The levels of headings to be displayed in the outline.
-   * Single number means only headings of that level will be displayed.
-   * If a tuple is passed, the first number is the minimum level and the second number is the maximum level.
-   * `'deep'` is same as `[2, 6]`, which means all headings from `<h2>` to `<h6>` will be displayed.
+   * 개요에 표시될 제목 수준.
+   * 단일 수치는 해당 수준의 제목만 표시됨을 의미합니다.
+   * 튜플이 전달되면 첫 번째 수치는 최소 수준이고 두 번째 수치는 최대 수준입니다.
+   * `'deep'`은 `[2, 6]`과 동일하며, `<h2>`부터 `<h6>`까지의 모든 제목이 표시됨을 의미합니다.
    *
    * @default 2
    */
   level?: number | [number, number] | 'deep'
 
   /**
-   * The title to be displayed on the outline.
+   * 개요에 표시될 제목.
    *
-   * @default 'On this page'
+   * @default '이 페이지에서'
    */
   label?: string
 }
@@ -207,9 +207,9 @@ interface Outline {
 
 ## socialLinks
 
-- Type: `SocialLink[]`
+- 타입: `SocialLink[]`
 
-You may define this option to show your social account links with icons in nav.
+내비게이션에 아이콘과 함께 소셜 계정 링크를 표시하기 위해 이 옵션을 정의할 수 있습니다.
 
 ```ts
 export default {
@@ -217,14 +217,14 @@ export default {
     socialLinks: [
       { icon: 'github', link: 'https://github.com/vuejs/vitepress' },
       { icon: 'twitter', link: '...' },
-      // You can also add custom icons by passing SVG as string:
+      // SVG 문자열을 전달하여 사용자 정의 아이콘을 추가할 수도 있습니다:
       {
         icon: {
           svg: '<svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Dribbble</title><path d="M12...6.38z"/></svg>'
         },
         link: '...',
-        // You can include a custom label for accessibility too (optional but recommended):
-        ariaLabel: 'cool link'
+        // 접근성을 위해 사용자 정의 레이블을 포함할 수도 있습니다 (선택 사항이지만 권장됨):
+        ariaLabel: '멋진 링크'
       }
     ]
   }
@@ -255,17 +255,17 @@ type SocialLinkIcon =
 
 ## footer
 
-- Type: `Footer`
-- Can be overridden per page via [frontmatter](./frontmatter-config#footer)
+- 타입: `Footer`
+- [frontmatter](./frontmatter-config#footer)를 통해 페이지별로 재정의 가능
 
-Footer configuration. You can add a message or copyright text on the footer, however, it will only be displayed when the page doesn't contain a sidebar. This is due to design concerns.
+풋터 설정입니다. 풋터에 메시지나 저작권 텍스트를 추가할 수 있지만, 사이드바를 포함하지 않는 페이지에서만 표시됩니다. 이는 디자인 우려사항 때문입니다.
 
 ```ts
 export default {
   themeConfig: {
     footer: {
-      message: 'Released under the MIT License.',
-      copyright: 'Copyright © 2019-present Evan You'
+      message: 'MIT 라이선스에 따라 릴리즈되었습니다.',
+      copyright: '저작권 © 2019-현재 Evan You'
     }
   }
 }
@@ -274,23 +274,23 @@ export default {
 ```ts
 export interface Footer {
   message?: string
-  copyright?: string
+  COPYRIGHT?: string
 }
 ```
 
 ## editLink
 
-- Type: `EditLink`
-- Can be overridden per page via [frontmatter](./frontmatter-config#editlink)
+- 타입: `EditLink`
+- [frontmatter](./frontmatter-config#editlink)를 통해 페이지별로 재정의 가능
 
-Edit Link lets you display a link to edit the page on Git management services such as GitHub, or GitLab. See [Default Theme: Edit Link](./default-theme-edit-link) for more details.
+편집 링크를 통해 GitHub이나 GitLab과 같은 Git 관리 서비스에서 페이지를 편집하는 링크를 표시할 수 있습니다. [기본 테마: 편집 링크](./default-theme-edit-link)에서 자세한 내용을 확인하세요.
 
 ```ts
 export default {
   themeConfig: {
     editLink: {
       pattern: 'https://github.com/vuejs/vitepress/edit/main/docs/:path',
-      text: 'Edit this page on GitHub'
+      text: 'GitHub에서 이 페이지 편집하기'
     }
   }
 }
@@ -305,15 +305,15 @@ export interface EditLink {
 
 ## lastUpdated
 
-- Type: `LastUpdatedOptions`
+- 타입: `LastUpdatedOptions`
 
-Allows customization for the last updated text and date format.
+마지막 업데이트 텍스트와 날짜 형식을 사용자 정의할 수 있습니다.
 
 ```ts
 export default {
   themeConfig: {
     lastUpdated: {
-      text: 'Updated at',
+      text: '업데이트 되었습니다',
       formatOptions: {
         dateStyle: 'full',
         timeStyle: 'medium'
@@ -326,13 +326,13 @@ export default {
 ```ts
 export interface LastUpdatedOptions {
   /**
-   * @default 'Last updated'
+   * @default '마지막 업데이트'
    */
   text?: string
 
   /**
    * @default
-   * { dateStyle: 'short',  timeStyle: 'short' }
+   * {dateStyle: 'short', timeStyle: 'short'}
    */
   formatOptions?: Intl.DateTimeFormatOptions & { forceLocale?: boolean }
 }
@@ -340,9 +340,9 @@ export interface LastUpdatedOptions {
 
 ## algolia
 
-- Type: `AlgoliaSearch`
+- 타입: `AlgoliaSearch`
 
-An option to support searching your docs site using [Algolia DocSearch](https://docsearch.algolia.com/docs/what-is-docsearch). Learn more in [Default Theme: Search](./default-theme-search)
+[Algolia DocSearch](https://docsearch.algolia.com/docs/what-is-docsearch)를 사용하여 문서 사이트를 검색할 수 있는 옵션입니다. [기본 테마: 검색](./default-theme-search)에서 자세히 알아보세요.
 
 ```ts
 export interface AlgoliaSearchOptions extends DocSearchProps {
@@ -350,13 +350,13 @@ export interface AlgoliaSearchOptions extends DocSearchProps {
 }
 ```
 
-View full options [here](https://github.com/vuejs/vitepress/blob/main/types/docsearch.d.ts).
+전체 옵션은 [여기](https://github.com/vuejs/vitepress/blob/main/types/docsearch.d.ts)에서 확인하세요.
 
 ## carbonAds {#carbon-ads}
 
-- Type: `CarbonAdsOptions`
+- 타입: `CarbonAdsOptions`
 
-An option to display [Carbon Ads](https://www.carbonads.net/).
+[Carbon Ads](https://www.carbonads.net/)를 표시할 수 있는 옵션입니다.
 
 ```ts
 export default {
@@ -376,20 +376,20 @@ export interface CarbonAdsOptions {
 }
 ```
 
-Learn more in [Default Theme: Carbon Ads](./default-theme-carbon-ads)
+[기본 테마: Carbon Ads](./default-theme-carbon-ads)에서 자세히 알아보세요.
 
 ## docFooter
 
-- Type: `DocFooter`
+- 타입: `DocFooter`
 
-Can be used to customize text appearing above previous and next links. Helpful if not writing docs in English. Also can be used to disable prev/next links globally. If you want to selectively enable/disable prev/next links, you can use [frontmatter](./default-theme-prev-next-links).
+영어로 문서를 작성하지 않을 때 이전 및 다음 링크 위에 나타나는 텍스트를 사용자 정의하는 데 사용할 수 있습니다. 또한 이전/다음 링크를 전역적으로 비활성화할 수 있습니다. 이전/다음 링크를 선택적으로 활성화/비활성화하려면 [frontmatter](./default-theme-prev-next-links)를 사용할 수 있습니다.
 
 ```ts
 export default {
   themeConfig: {
     docFooter: {
-      prev: 'Pagina prior',
-      next: 'Proxima pagina'
+      prev: '이전 페이지',
+      next: '다음 페이지'
     }
   }
 }
@@ -404,49 +404,49 @@ export interface DocFooter {
 
 ## darkModeSwitchLabel
 
-- Type: `string`
-- Default: `Appearance`
+- 타입: `string`
+- 기본값: `외관`
 
-Can be used to customize the dark mode switch label. This label is only displayed in the mobile view.
+어두운 모드 전환 레이블을 사용자 정의하는 데 사용할 수 있습니다. 이 레이블은 모바일 뷰에서만 표시됩니다.
 
 ## lightModeSwitchTitle
 
-- Type: `string`
-- Default: `Switch to light theme`
+- 타입: `string`
+- 기본값: `라이트 테마로 전환`
 
-Can be used to customize the light mode switch title that appears on hovering.
+호버 시 나타나는 라이트 모드 전환 제목을 사용자 정의하는 데 사용할 수 있습니다.
 
 ## darkModeSwitchTitle
 
-- Type: `string`
-- Default: `Switch to dark theme`
+- 타입: `string`
+- 기본값: `어두운 테마로 전환`
 
-Can be used to customize the dark mode switch title that appears on hovering.
+호버 시 나타나는 어두운 모드 전환 제목을 사용자 정의하는 데 사용할 수 있습니다.
 
 ## sidebarMenuLabel
 
-- Type: `string`
-- Default: `Menu`
+- 타입: `string`
+- 기본값: `메뉴`
 
-Can be used to customize the sidebar menu label. This label is only displayed in the mobile view.
+사이드바 메뉴 레이블을 사용자 정의하는 데 사용할 수 있습니다. 이 레이블은 모바일 뷰에서만 표시됩니다.
 
 ## returnToTopLabel
 
-- Type: `string`
-- Default: `Return to top`
+- 타입: `string`
+- 기본값: `맨 위로 돌아가기`
 
-Can be used to customize the label of the return to top button. This label is only displayed in the mobile view.
+맨 위로 돌아가기 버튼의 레이블을 사용자 정의하는 데 사용할 수 있습니다. 이 레이블은 모바일 뷰에서만 표시됩니다.
 
 ## langMenuLabel
 
-- Type: `string`
-- Default: `Change language`
+- 타입: `string`
+- 기본값: `언어 변경`
 
-Can be used to customize the aria-label of the language toggle button in navbar. This is only used if you're using [i18n](../guide/i18n).
+내비게이션 바의 언어 토글 버튼의 aria-label을 사용자 정의하는 데 사용됩니다. [i18n](../guide/i18n)을 사용하는 경우에만 사용됩니다.
 
 ## externalLinkIcon
 
-- Type: `boolean`
-- Default: `false`
+- 타입: `boolean`
+- 기본값: `false`
 
-Whether to show an external link icon next to external links in markdown.
+마크다운의 외부 링크 옆에 외부 링크 아이콘을 표시할지 여부입니다.

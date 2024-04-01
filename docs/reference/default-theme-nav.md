@@ -1,10 +1,10 @@
 # Nav
 
-The Nav is the navigation bar displayed on top of the page. It contains the site title, global menu links, etc.
+Nav 페이지 상단에 표시되는 내비게이션 바입니다. 사이트 제목, 전역 메뉴 링크 등을 포함하고 있습니다.
 
-## Site Title and Logo
+## 사이트 제목 및 로고
 
-By default, nav shows the title of the site referencing [`config.title`](./site-config#title) value. If you would like to change what's displayed on nav, you may define custom text in `themeConfig.siteTitle` option.
+기본적으로 nav는 [`config.title`](./site-config#title) 값이 참조하는 사이트 제목을 표시합니다. nav에 표시되는 내용을 변경하고 싶다면 `themeConfig.siteTitle` 옵션에 사용자 정의 텍스트를 정의할 수 있습니다.
 
 ```js
 export default {
@@ -14,7 +14,7 @@ export default {
 }
 ```
 
-If you have a logo for your site, you can display it by passing in the path to the image. You should place the logo within `public` directly, and define the absolute path to it.
+사이트에 로고가 있다면 이미지 경로를 전달하여 표시할 수 있습니다. 로고를 `public` 디렉터리에 위치시키고, 그 절대 경로를 정의해야 합니다.
 
 ```js
 export default {
@@ -24,7 +24,7 @@ export default {
 }
 ```
 
-When adding a logo, it gets displayed along with the site title. If your logo is all you need and if you would like to hide the site title text, set `false` to the `siteTitle` option.
+로고를 추가하면 사이트 제목과 함께 표시됩니다. 로고만 필요하고 사이트 제목 텍스트를 숨기고 싶다면 `siteTitle` 옵션에 `false`를 설정하세요.
 
 ```js
 export default {
@@ -35,39 +35,39 @@ export default {
 }
 ```
 
-You can also pass an object as logo if you want to add `alt` attribute or customize it based on dark/light mode. Refer [`themeConfig.logo`](./default-theme-config#logo) for details.
+`alt` 속성을 추가하거나 어두운/밝은 모드에 따라 로고를 커스터마이즈하고 싶다면 객체로써 로고를 전달할 수 있습니다. 자세한 내용은 [`themeConfig.logo`](./default-theme-config#logo)를 참조하세요.
 
-## Navigation Links
+## 내비게이션 링크
 
-You may define `themeConfig.nav` option to add links to your nav.
+`themeConfig.nav` 옵션을 정의하여 nav에 링크를 추가할 수 있습니다.
 
 ```js
 export default {
   themeConfig: {
     nav: [
-      { text: 'Guide', link: '/guide' },
-      { text: 'Config', link: '/config' },
-      { text: 'Changelog', link: 'https://github.com/...' }
+      { text: '가이드', link: '/guide' },
+      { text: '설정', link: '/config' },
+      { text: '변경사항', link: 'https://github.com/...' }
     ]
   }
 }
 ```
 
-The `text` is the actual text displayed in nav, and the `link` is the link that will be navigated to when the text is clicked. For the link, set path to the actual file without `.md` prefix, and always start with `/`.
+`text`는 nav에 표시되는 실제 텍스트이고, `link`는 텍스트를 클릭할 때 이동할 링크입니다. 링크는 실제 파일의 경로를 `.md` 접두어 없이 설정하고 항상 `/`로 시작해야 합니다.
 
-Nav links can also be dropdown menus. To do this, set `items` key on link option.
+Nav 링크는 드롭다운 메뉴일 수도 있습니다. 이를 위해 링크 옵션에 `items` 키를 설정하세요.
 
 ```js
 export default {
   themeConfig: {
     nav: [
-      { text: 'Guide', link: '/guide' },
+      { text: '가이드', link: '/guide' },
       {
-        text: 'Dropdown Menu',
+        text: '드롭다운 메뉴',
         items: [
-          { text: 'Item A', link: '/item-1' },
-          { text: 'Item B', link: '/item-2' },
-          { text: 'Item C', link: '/item-3' }
+          { text: '항목 A', link: '/item-1' },
+          { text: '항목 B', link: '/item-2' },
+          { text: '항목 C', link: '/item-3' }
         ]
       }
     ]
@@ -75,36 +75,36 @@ export default {
 }
 ```
 
-Note that dropdown menu title (`Dropdown Menu` in the above example) can not have `link` property since it becomes a button to open dropdown dialog.
+드롭다운 메뉴 제목(`위 예제에서의 드롭다운 메뉴`)은 드롭다운 대화상자를 열 버튼이 되므로 `link` 속성을 가질 수 없습니다.
 
-You may further add "sections" to the dropdown menu items as well by passing in more nested items.
+더 많은 중첩된 항목을 전달하여 드롭다운 메뉴 항목에 "섹션"을 추가할 수도 있습니다.
 
 ```js
 export default {
   themeConfig: {
     nav: [
-      { text: 'Guide', link: '/guide' },
+      { text: '가이드', link: '/guide' },
       {
-        text: 'Dropdown Menu',
+        text: '드롭다운 메뉴',
         items: [
           {
-            // Title for the section.
-            text: 'Section A Title',
+            // 섹션의 제목.
+            text: '섹션 A 제목',
             items: [
-              { text: 'Section A Item A', link: '...' },
-              { text: 'Section B Item B', link: '...' }
+              { text: '섹션 A 항목 A', link: '...' },
+              { text: '섹션 B 항목 B', link: '...' }
             ]
           }
         ]
       },
       {
-        text: 'Dropdown Menu',
+        text: '드롭다운 메뉴',
         items: [
           {
-            // You may also omit the title.
+            // 제목을 생략할 수도 있습니다.
             items: [
-              { text: 'Section A Item A', link: '...' },
-              { text: 'Section B Item B', link: '...' }
+              { text: '섹션 A 항목 A', link: '...' },
+              { text: '섹션 B 항목 B', link: '...' }
             ]
           }
         ]
@@ -114,18 +114,18 @@ export default {
 }
 ```
 
-### Customize link's "active" state
+### 링크의 "active" 상태 커스터마이징
 
-Nav menu items will be highlighted when the current page is under the matching path. if you would like to customize the path to be matched, define `activeMatch` property and regex as a string value.
+현재 페이지가 일치하는 경로에 있을 때 Nav 메뉴 항목이 강조 표시됩니다. 매치되길 원하는 경로를 커스터마이징하고 싶다면 문자열 값으로 `activeMatch` 속성과 정규식을 정의하세요.
 
 ```js
 export default {
   themeConfig: {
     nav: [
-      // This link gets active state when the user is
-      // on `/config/` path.
+      // 사용자가 `/config/` 경로에 있을 때
+      // 이 링크는 활성 상태가 됩니다.
       {
-        text: 'Guide',
+        text: '가이드',
         link: '/guide',
         activeMatch: '/config/'
       }
@@ -135,19 +135,19 @@ export default {
 ```
 
 ::: warning
-`activeMatch` is expected to be a regex string, but you must define it as a string. We can't use actual RegExp object here because it isn't serializable during the build time.
+`activeMatch`는 정규식 문자열로 예상되지만, 문자열로 정의해야 합니다. 실제 RegExp 객체를 여기서 사용할 수 없는 이유는 빌드 시간 동안 직렬화가 가능하지 않기 때문입니다.
 :::
 
-### Customize link's "target" and "rel" attributes
+### 링크의 "target" 및 "rel" 속성 커스터마이즈
 
-By default, VitePress automatically determines `target` and `rel` attributes based on whether the link is an external link. But if you want, you can customize them too.
+기본적으로 VitePress는 링크가 외부 링크인지에 따라 `target` 및 `rel` 속성을 자동으로 결정합니다. 하지만 원한다면 이들도 커스터마이징할 수 있습니다.
 
 ```js
 export default {
   themeConfig: {
     nav: [
       {
-        text: 'Merchandise',
+        text: '상품',
         link: 'https://www.thegithubshop.com/',
         target: '_self',
         rel: 'sponsored'
@@ -157,6 +157,6 @@ export default {
 }
 ```
 
-## Social Links
+## 소셜 링크
 
-Refer [`socialLinks`](./default-theme-config#sociallinks).
+[`socialLinks`](./default-theme-config#sociallinks)를 참조하세요.

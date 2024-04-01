@@ -1,36 +1,36 @@
-# Prev Next Links
+# 이전 다음 링크
 
-You can customize the text and link for the previous and next pages (shown at doc footer). This is helpful if you want a different text there than what you have on your sidebar. Additionally, you may find it useful to disable the footer or link to a page that is not included in your sidebar.
+이전 페이지와 다음 페이지에 대한 텍스트와 링크를 사용자 정의할 수 있습니다(문서 하단에 표시됨). 사이드바에 있는 텍스트와 다른 텍스트를 원하는 경우에 유용합니다. 또한, 하단부를 비활성화하거나 사이드바에 포함되지 않은 페이지로 링크하는 것이 유용할 수 있습니다.
 
 ## prev
 
-- Type: `string | false | { text?: string; link?: string }`
+- 타입: `string | false | { text?: string; link?: string }`
 
-- Details:
+- 세부 사항:
 
-  Specifies the text/link to show on the link to the previous page. If you don't set this in frontmatter, the text/link will be inferred from the sidebar config.
+  이전 페이지로의 링크에 표시할 텍스트/링크를 지정합니다. frontmatter에서 이를 설정하지 않으면, 사이드바 구성에서 텍스트/링크를 추론합니다.
 
-- Examples:
+- 예제:
 
-  - To customize only the text:
+  - 텍스트만 사용자 정의할 경우:
 
     ```yaml
     ---
-    prev: 'Get Started | Markdown'
+    prev: '시작하기 | 마크다운'
     ---
     ```
 
-  - To customize both text and link:
+  - 텍스트와 링크 모두 사용자 정의할 경우:
 
     ```yaml
     ---
     prev:
-      text: 'Markdown'
+      text: '마크다운'
       link: '/guide/markdown'
     ---
     ```
 
-  - To hide previous page:
+  - 이전 페이지 숨기기:
 
     ```yaml
     ---
@@ -40,4 +40,4 @@ You can customize the text and link for the previous and next pages (shown at do
 
 ## next
 
-Same as `prev` but for the next page.
+`prev`와 동일하지만 다음 페이지에 대한 설정입니다.

@@ -1,12 +1,12 @@
-# Last Updated
+# 마지막 업데이트 시간
 
-The update time of the last content will be displayed in the lower right corner of the page. To enable it, add `lastUpdated` options to your config.
+마지막 내용의 업데이트 시간은 페이지의 오른쪽 하단에 표시됩니다. 활성화하려면 config에 `lastUpdated` 옵션을 추가하세요.
 
 ::: tip
-You need to commit the markdown file to see the updated time.
+업데이트 시간을 보려면 markdown 파일을 커밋해야 합니다.
 :::
 
-## Site-Level Config
+## 사이트 수준 설정
 
 ```js
 export default {
@@ -14,9 +14,9 @@ export default {
 }
 ```
 
-## Frontmatter Config
+## 프런트매터 설정
 
-This can be disabled per-page using the `lastUpdated` option on frontmatter:
+이 기능은 frontmatter의 `lastUpdated` 옵션을 사용하여 페이지별로 비활성화할 수 있습니다:
 
 ```yaml
 ---
@@ -24,4 +24,4 @@ lastUpdated: false
 ---
 ```
 
-Also refer [Default Theme: Last Updated](./default-theme-config#lastupdated) for more details. Any truthy value at theme-level will also enable the feature unless explicitly disabled at site or page level.
+자세한 내용은 [기본 테마: 마지막 업데이트 시간](./default-theme-config#lastupdated)를 참조하세요. 테마 수준에서 참 값을 설정하면 사이트 또는 페이지 수준에서 명시적으로 비활성화하지 않는 한 기능이 활성화됩니다.

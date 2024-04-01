@@ -1,38 +1,38 @@
-# Badge
+# 배지
 
-The badge lets you add status to your headers. For example, it could be useful to specify the section's type, or supported version.
+배지는 헤더에 상태를 추가할 수 있게 해줍니다. 예를 들어, 섹션의 유형이나 지원되는 버전을 명시하는 것이 유용할 수 있습니다.
 
-## Usage
+## 사용법
 
-You may use the `Badge` component which is globally available.
-
-```html
-### Title <Badge type="info" text="default" />
-### Title <Badge type="tip" text="^1.9.0" />
-### Title <Badge type="warning" text="beta" />
-### Title <Badge type="danger" text="caution" />
-```
-
-Code above renders like:
-
-### Title <Badge type="info" text="default" />
-### Title <Badge type="tip" text="^1.9.0" />
-### Title <Badge type="warning" text="beta" />
-### Title <Badge type="danger" text="caution" />
-
-## Custom Children
-
-`<Badge>` accept `children`, which will be displayed in the badge.
+글로벌하게 사용 가능한 `Badge` 컴포넌트를 사용할 수 있습니다.
 
 ```html
-### Title <Badge type="info">custom element</Badge>
+### 제목 <Badge type="info" text="default" />
+### 제목 <Badge type="tip" text="^1.9.0" />
+### 제목 <Badge type="warning" text="beta" />
+### 제목 <Badge type="danger" text="주의" />
 ```
 
-### Title <Badge type="info">custom element</Badge>
+위 코드는 다음과 같이 렌더링됩니다:
 
-## Customize Type Color
+### 제목 <Badge type="info" text="default" />
+### 제목 <Badge type="tip" text="^1.9.0" />
+### 제목 <Badge type="warning" text="beta" />
+### 제목 <Badge type="danger" text="주의" />
 
-You can customize the style of badges by overriding css variables. The following are the default values:
+## 사용자 정의 자식 요소
+
+`<Badge>`는 `children`을 받아들이며, 이는 배지 안에 표시됩니다.
+
+```html
+### 제목 <Badge type="info">사용자 정의 요소</Badge>
+```
+
+### 제목 <Badge type="info">사용자 정의 요소</Badge>
+
+## 타입 색상 사용자 정의
+
+css 변수를 오버라이딩함으로써 배지의 스타일을 사용자 정의할 수 있습니다. 다음은 기본값입니다:
 
 ```css
 :root {
@@ -56,14 +56,14 @@ You can customize the style of badges by overriding css variables. The following
 
 ## `<Badge>`
 
-`<Badge>` component accepts following props:
+`<Badge>` 컴포넌트는 다음의 prop들을 받습니다:
 
 ```ts
 interface Props {
-  // When `<slot>` is passed, this value gets ignored.
+  // `<slot>`이 전달되면, 이 값은 무시됩니다.
   text?: string
 
-  // Defaults to `tip`.
+  // 기본값은 `tip`입니다.
   type?: 'info' | 'tip' | 'warning' | 'danger'
 }
 ```
