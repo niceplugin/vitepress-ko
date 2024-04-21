@@ -292,3 +292,46 @@ HTML 코드에 대해 _Auto Minify_와 같은 옵션을 활성화하지 마세�
 
 VitePress 프로젝트를 [Stormkit](https://www.stormkit.io)에 배포하려면 이 [지침](https://stormkit.io/blog/how-to-deploy-vitepress)을 따르세요.
 
+### Nginx
+
+다음은 Nginx 서버 블록 구성의 예입니다. 이 설정에는 일반적인 텍스트 기반 자산에 대한 gzip 압축, 적절한 캐싱 헤더로 VitePress 사이트의 정적 파일을 제공하는 규칙, `cleanUrls: true`를 처리하는 규칙이 포함되어 있습니다.
+
+```nginx
+server {
+    gzip on;
+    gzip_types text/plain text/css application/json application/javascript text/xml application/xml application/xml+rss text/javascript;
+
+    listen 80;
+    server_name _;
+    index index.html;
+
+    location / {
+        # 내용 위치
+        root /app;
+
+        # 정확한 일치 -> 깨끗한 URL로 처리 -> 폴더 -> 찾을 수 없음
+        try_files $uri $uri.html $uri/ =404;
+
+        # 존재하지 않는 페이지
+        error_page 404 /404.html;
+
+        # index.html이 없는 폴더는 이 설정에서 403을 발생시킴
+        error_page 403 /404.html;
+
+        # 캐싱 헤더 조정
+        # assets 폴더의 파일은 해시 파일 이름을 가짐
+        location ~* ^/assets/ {
+            expires 1y;
+            add_header Cache-Control "public, immutable";
+        }
+    }
+}
+```
+
+이 구성은 빌드된 VitePress 사이트가 서버상의 `/app` 디렉토리에 위치한다고 가정합니다. 사이트 파일이 다른 곳에 위치한 경우 `root` 지시문을 그에 맞게 조정하세요.
+
+::: warning index.html을 기본값으로 설정하지 마세요.
+try_files 해결은 다른 Vue 애플리케이션처럼 index.html로 기본 설정되어서는 안 됩니다. 이것은 유효하지 않은 페이지 상태로 이어질 것입니다.
+:::
+
+추가 정보는 [공식 nginx 문서](https://nginx.org/en/docs/), 이슈 [#2837](https://github.com/vuejs/vitepress/discussions/2837), [#3235](https://github.com/vuejs/vitepress/issues/3235) 그리고 Mehdi Merah의 [블로그 포스트](https://blog.mehdi.cc/articles/vitepress-cleanurls-on-nginx-environment#readings)에서 찾을 수 있습니다.
