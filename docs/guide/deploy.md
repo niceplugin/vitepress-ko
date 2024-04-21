@@ -287,3 +287,8 @@ HTML 코드에 대해 _Auto Minify_와 같은 옵션을 활성화하지 마세�
 ### Kinsta 정적 사이트 호스팅
 
 [Kinsta](https://kinsta.com/static-site-hosting/)에서 Vitepress 웹사이트를 배포하는 방법은 [이 지침](https://kinsta.com/docs/vitepress-static-site-example/)을 따르세요.
+
+### 스톰킷
+
+VitePress 프로젝트를 [Stormkit](https://www.stormkit.io)에 배포하려면 이 [지침](https://stormkit.io/blog/how-to-deploy-vitepress)을 따르세요.
+
