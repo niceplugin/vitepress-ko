@@ -38,6 +38,10 @@ interface VitePressData<T = any> {
   isDark: Ref<boolean>
   dir: Ref<string>
   localeIndex: Ref<string>
+  /**
+   * 현재 위치 해시
+   */
+  hash: Ref<string>
 }
 
 interface PageData {

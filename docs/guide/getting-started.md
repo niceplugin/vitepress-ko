@@ -71,8 +71,12 @@ $ npx vitepress init
 $ pnpm vitepress init
 ```
 
+```sh [yarn]
+$ yarn vitepress init
+```
+
 ```sh [bun]
-$ bunx vitepress init
+$ bun vitepress init
 ```
 
 :::
@@ -82,7 +86,7 @@ $ bunx vitepress init
 <<< @/snippets/init.ansi
 
 ::: tip Vue를 피어 의존성으로
-Vue 컴포넌트나 API를 사용하여 커스터마이즈를 수행하려면, `vue`도 명시적으로 피어 의존성으로 설치해야 합니다.
+Vue 컴포넌트나 API를 사용하여 커스터마이즈를 수행하려면, `vue`도 명시적으로 의존성으로 설치해야 합니다.
 :::
 
 ## 파일 구조
@@ -182,11 +186,15 @@ $ npx vitepress dev docs
 ```
 
 ```sh [pnpm]
-$ pnpm exec vitepress dev docs
+$ pnpm vitepress dev docs
+```
+
+```sh [yarn]
+$ yarn vitepress dev docs
 ```
 
 ```sh [bun]
-$ bunx vitepress dev docs
+$ bun vitepress dev docs
 ```
 
 :::

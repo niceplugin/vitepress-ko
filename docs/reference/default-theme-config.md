@@ -135,7 +135,7 @@ export default {
 export type Sidebar = SidebarItem[] | SidebarMulti
 
 export interface SidebarMulti {
-  [path: string]: SidebarItem[]
+  [path: string]: SidebarItem[] | { items: SidebarItem[]; base: string }
 }
 
 export type SidebarItem = {
